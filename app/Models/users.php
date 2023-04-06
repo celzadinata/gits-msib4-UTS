@@ -28,4 +28,13 @@ class users extends Authenticatable
         'password'
 
     ];
+
+    public function products()
+    {
+        return $this->hasMany(products::class);
+    }
+    public function transaction()
+    {
+        return $this->hasMany(transactions::class);
+    }
 }

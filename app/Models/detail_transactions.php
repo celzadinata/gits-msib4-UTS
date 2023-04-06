@@ -11,4 +11,9 @@ class detail_transactions extends Model
     protected $fillable = [
         'qty', 'sub_total'
     ];
+
+    public function transactions()
+    {
+        return $this->belongsTo(transactions::class);
+    }
 }

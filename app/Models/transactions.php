@@ -11,4 +11,13 @@ class transactions extends Model
     protected $fillable = [
         'date', 'payment', 'total'
     ];
+
+    public function detail_transactions()
+    {
+        return $this->hasMany(detail_transactions::class);
+    }
+    public function users()
+    {
+        return $this->belongsTo(users::class);
+    }
 }

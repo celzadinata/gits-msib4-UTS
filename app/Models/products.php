@@ -11,4 +11,17 @@ class products extends Model
     protected $fillable = [
         'name', 'description', 'price', 'stock', 'slug'
     ];
+
+    public function categories()
+    {
+        return $this->belongsTo(categories::class);
+    }
+    public function users()
+    {
+        return $this->belongsTo(users::class);
+    }
+    public function detail_transactions()
+    {
+        return $this->hasMany(detail_transactions::class);
+    }
 }
