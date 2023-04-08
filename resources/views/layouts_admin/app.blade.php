@@ -20,12 +20,12 @@
 
 <body>
     {{-- Sidebar --}}
-    @include('layouts.sidebar')
+    @include('layouts_admin.sidebar')
     {{-- End Sidebar --}}
     <!-- End Sideber -->
     <section class="home_section">
         {{-- Topbar --}}
-        @include('layouts.topbar')
+        @include('layouts_admin.topbar')
         {{-- End Topbar --}}
         {{-- Content --}}
         @yield('content')

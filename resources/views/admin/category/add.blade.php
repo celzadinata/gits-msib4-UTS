@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts_admin.app')
 @section('content')
     <div class="details">
         <div class="recent_project">
