@@ -20,7 +20,7 @@ Route::prefix('admin')->middleware(['auth:web', 'isAdmin'])->group(function () {
     //Route::get('/', [ProdukController::class, 'index']);
     //Route::get('/cart/add/{id}', [CartController::class, 'store']);
     Route::get('/', function () {
-        return view('layouts.admin.test');
+        return view('admin.test');
     });
 });
 
@@ -30,7 +30,7 @@ Route::middleware(['auth:web'])->group(function () {
     //Route::get('/', [ProdukController::class, 'index']);
     //Route::get('/cart/add/{id}', [CartController::class, 'store']);
     Route::get('/', function () {
-        return view('layouts.user.test');
+        return view('user.test');
     });
 });
 

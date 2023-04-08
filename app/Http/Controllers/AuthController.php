@@ -12,12 +12,12 @@ class AuthController extends Controller
 {
     public function register(Request $request)
     {
-        return view('layouts.auth.register');
+        return view('auth.register');
     }
 
     public function login(Request $request)
     {
-        return view('layouts.auth.login');
+        return view('auth.login');
     }
 
     public function doRegister(Request $request)
