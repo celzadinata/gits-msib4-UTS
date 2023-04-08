@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\categories;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class CategoriesController extends Controller
 {
@@ -43,7 +44,7 @@ class CategoriesController extends Controller
 
         categories::create($request->all());
 
-        return redirect()->route('category')->with('status', 'Berhasil Menambah Kategori!');
+        return redirect()->route('category')->with('success', 'Berhasil Menambah Kategori!');
     }
 
     /**
@@ -85,7 +86,7 @@ class CategoriesController extends Controller
 
         $id->update($request->all());
 
-        return redirect()->route('category')->with('status', 'Berhasil Mengupdate Kategori!');
+        return redirect()->route('category')->with('warning', 'Berhasil Mengupdate Kategori!');
     }
 
     /**
@@ -97,6 +98,7 @@ class CategoriesController extends Controller
     public function destroy($id)
     {
         categories::destroy($id);
-        return back()->with('hapus', 'Berhasil Menghapus Kategori!');
+        alert()->error('Title','Berhasil Menghapus');;
+        return back();
     }
 }

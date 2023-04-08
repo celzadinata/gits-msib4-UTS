@@ -8,7 +8,7 @@
     <ul>
         <li>
             <a href="#">
-                <i class='bx bx-grid-alt'></i>
+                <i class='bx bxs-dashboard'></i>
                 <span class="links_name">
                     Dashboard
                 </span>
@@ -16,9 +16,9 @@
         </li>
         <li>
             <a href="#" class="active">
-                <i class='bx bxs-truck'></i>
+                <i class='bx bx-category'></i>
                 <span class="links_name">
-                    Category
+                    Kategori
                 </span>
             </a>
         </li>
@@ -26,15 +26,23 @@
             <a href="#">
                 <i class='bx bx-cart-alt'></i>
                 <span class="links_name">
-                    Product
+                    Produk
                 </span>
             </a>
         </li>
         <li>
             <a href="#">
-                <i class='bx bx-cog'></i>
+                <i class='bx bx-book-open'></i>
                 <span class="links_name">
-                    Setting
+                    Transaksi
+                </span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class='bx bx-user'></i>
+                <span class="links_name">
+                    Profile
                 </span>
             </a>
         </li>
