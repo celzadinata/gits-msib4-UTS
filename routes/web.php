@@ -14,6 +14,7 @@ use App\Http\Controllers\CategoriesController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::get('/category', [CategoriesController::class, 'index'])->name('category');
 Route::get('/category/add', [CategoriesController::class, 'create'])->name('category.add');
 Route::post('/category/create', [CategoriesController::class, 'store'])->name('category.create');
@@ -48,4 +49,3 @@ Route::get('/logout', [AuthController::class, "logout"])->name('logout');
 
 Route::post('/register', [AuthController::class, "doRegister"])->name('do.register');
 Route::post('/login', [AuthController::class, "doLogin"])->name('do.login');
->>>>>>> 9c0b6c3303fbc82c8c3c4d6bbf4565df81d83bbf
