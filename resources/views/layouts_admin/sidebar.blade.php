@@ -7,7 +7,7 @@
     </div>
     <ul>
         <li>
-            <a href="{{ route('dashboard.admin') }}">
+            <a href="{{ route('dashboard.admin') }}" class="nav-link" id="dashboard">
                 <i class='bx bxs-dashboard'></i>
                 <span class="links_name">
                     Dashboard
@@ -15,7 +15,7 @@
             </a>
         </li>
         <li>
-            <a href="{{ route('category') }}" class="active">
+            <a href="{{ route('category') }}" class="nav-link" id="category">
                 <i class='bx bx-category'></i>
                 <span class="links_name">
                     Kategori
@@ -23,7 +23,7 @@
             </a>
         </li>
         <li>
-            <a href="#">
+            <a href="#" class="nav-link" id="product">
                 <i class='bx bx-cart-alt'></i>
                 <span class="links_name">
                     Produk
@@ -31,7 +31,7 @@
             </a>
         </li>
         <li>
-            <a href="#">
+            <a href="#" class="nav-link" id="transaction">
                 <i class='bx bx-book-open'></i>
                 <span class="links_name">
                     Transaksi
@@ -39,7 +39,7 @@
             </a>
         </li>
         <li>
-            <a href="#">
+            <a href="#" class="nav-link" id="profile">
                 <i class='bx bx-user'></i>
                 <span class="links_name">
                     Profile
