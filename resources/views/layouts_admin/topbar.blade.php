@@ -11,6 +11,6 @@
         </label>
     </div>
     <div class="user_wrapper">
-        <img src="{{ asset('assets/img/user.jpg') }}" alt="">
+        <img src="{{ asset('user/' . Auth::user()->avatar) }}" alt="">
     </div>
 </div>

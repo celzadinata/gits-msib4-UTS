@@ -54,14 +54,14 @@ class AuthController extends Controller
 
         Auth::login($user);
 
-        return redirect('admin');
+        return redirect('/');
     }
 
     public function doLogin(Request $request)
     {
         $credentials = $request->validate([
             'email' => 'required|string|email|max:100',
-            'password' => ['required', Password::defaults()],
+            'password' => ['required'],
         ]);
 
         if (Auth::attempt($credentials)) {
