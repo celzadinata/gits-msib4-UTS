@@ -39,7 +39,7 @@
             </a>
         </li>
         <li>
-            <a href="#" class="nav-link" id="profile">
+            <a href="{{ route('dashboard.edit') }}" class="nav-link" id="profile">
                 <i class='bx bx-user'></i>
                 <span class="links_name">
                     Profile
@@ -47,9 +47,9 @@
             </a>
         </li>
         <li class="login">
-            <a href="#">
+            <a href="{{ route('logout') }}">
                 <span class="links_name login_out">
-                    Login Out
+                    Logout
                 </span>
                 <i class='bx bx-log-out' id="log_out"></i>
             </a>
