@@ -7,7 +7,7 @@
     </div>
     <ul>
         <li>
-            <a href="#">
+            <a href="{{ route('dashboard.admin') }}">
                 <i class='bx bxs-dashboard'></i>
                 <span class="links_name">
                     Dashboard
@@ -15,7 +15,7 @@
             </a>
         </li>
         <li>
-            <a href="#" class="active">
+            <a href="{{ route('category') }}" class="active">
                 <i class='bx bx-category'></i>
                 <span class="links_name">
                     Kategori
