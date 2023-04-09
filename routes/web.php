@@ -1,7 +1,9 @@
 <?php
 
-use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\DashboardAdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,14 +16,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::prefix('admin')->middleware(['auth:web', 'isAdmin'])->group(function () {
+
+Route::middleware(['auth:web', 'isAdmin'])->group(function () {
     //Route admin semua ditaro disini
     //Contoh:
     //Route::get('/', [ProdukController::class, 'index']);
     //Route::get('/cart/add/{id}', [CartController::class, 'store']);
     Route::get('/', function () {
-        return view('layouts.admin.test');
+        return view('admin.test');
     });
+    Route::get('/dashboard', [DashboardAdminController::class, 'index'])->name('dashboard.admin');
+    Route::get('/edit', [DashboardAdminController::class, 'edit'])->name('dashboard.edit');
+    Route::put('/update', [DashboardAdminController::class, 'update'])->name('do.update');
+    
+    
+    Route::get('/category', [CategoriesController::class, 'index'])->name('category');
+    Route::get('/category/add', [CategoriesController::class, 'create'])->name('category.add');
+    Route::post('/category/create', [CategoriesController::class, 'store'])->name('category.create');
+    Route::get('/category/edit/{id}', [CategoriesController::class, 'edit'])->name('category.edit');
+    Route::put('/category/update/{id}', [CategoriesController::class, 'update'])->name('category.update');
+    Route::get('/category/destroy/{id}', [CategoriesController::class, 'destroy'])->name('category.destroy');
 });
 
 Route::middleware(['auth:web'])->group(function () {
@@ -30,7 +44,7 @@ Route::middleware(['auth:web'])->group(function () {
     //Route::get('/', [ProdukController::class, 'index']);
     //Route::get('/cart/add/{id}', [CartController::class, 'store']);
     Route::get('/', function () {
-        return view('layouts.user.test');
+        return view('user.test');
     });
 });
 

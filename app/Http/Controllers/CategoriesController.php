@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\categories;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class CategoriesController extends Controller
 {
@@ -14,7 +15,8 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        //
+        $category = categories::all();
+        return view('admin.category.index',compact('category') );
     }
 
     /**
@@ -24,7 +26,7 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.category.add');
     }
 
     /**
@@ -35,7 +37,14 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name'       => 'required|string|min:2|max:100',
+            'description' => 'required',
+        ]);
+
+        categories::create($request->all());
+
+        return redirect()->route('category')->with('success', 'Berhasil Menambah Kategori!');
     }
 
     /**
@@ -55,9 +64,10 @@ class CategoriesController extends Controller
      * @param  \App\Models\categories  $categories
      * @return \Illuminate\Http\Response
      */
-    public function edit(categories $categories)
+    public function edit($id)
     {
-        //
+        $category = Categories::find($id);
+        return view('admin.category.edit', compact('category'));
     }
 
     /**
@@ -67,9 +77,16 @@ class CategoriesController extends Controller
      * @param  \App\Models\categories  $categories
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, categories $categories)
+    public function update(Request $request, categories $id)
     {
-        //
+        $request->validate([
+            'name'     => 'required|string|min:2|max:100',
+            'description' => 'required',
+        ]);
+
+        $id->update($request->all());
+
+        return redirect()->route('category')->with('warning', 'Berhasil Mengupdate Kategori!');
     }
 
     /**
@@ -78,8 +95,10 @@ class CategoriesController extends Controller
      * @param  \App\Models\categories  $categories
      * @return \Illuminate\Http\Response
      */
-    public function destroy(categories $categories)
+    public function destroy($id)
     {
-        //
+        categories::destroy($id);
+        alert()->error('Title','Berhasil Menghapus');;
+        return back();
     }
 }
