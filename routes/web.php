@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\DashboardAdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,9 @@ use App\Http\Controllers\CategoriesController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/dashboard', [DashboardAdminController::class, 'index'])->name('dashboard.admin');
+
 
 Route::get('/category', [CategoriesController::class, 'index'])->name('category');
 Route::get('/category/add', [CategoriesController::class, 'create'])->name('category.add');

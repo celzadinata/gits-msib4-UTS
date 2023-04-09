@@ -1,4 +1,5 @@
 @extends('layouts_admin.app')
+@section('title','Tambah Kategori')
 @section('content')
     <div class="details">
         <div class="recent_project">
