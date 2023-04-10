@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\DashboardAdminController;
+use App\Http\Controllers\UsersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,5 +55,6 @@ Route::middleware(['auth:web'])->group(function () {
     Route::get('/', function () {
         return view('user.test');
     });
+    Route::get('/profile', [UsersController::class, "index"])->name('user.index');
 });
 

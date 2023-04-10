@@ -35,9 +35,12 @@ class AuthController extends Controller
             'avatar' => 'mimes:jpg,jpeg,png|max:2048'
         ]);
 
-        $imgUrl = time() . '-' . $request->username . '.' . $request->avatar->extension();
+        $imgUrl = 'default';
 
-        $request->avatar->move(public_path('user'), $imgUrl);
+        if ($request->avatar) {
+            $imgUrl = time() . '-' . $request->username . '.' . $request->avatar->extension();
+            $request->avatar->move(public_path('user'), $imgUrl);
+        }
 
         $user = users::create([
             'first_name' => $request->firstName,
