@@ -51,8 +51,5 @@ Route::middleware(['auth:web', 'isAdmin'])->group(function () {
 
 // Role Pembeli
 Route::middleware(['auth:web'])->group(function () {
-    Route::get('/', function () {
-        return view('user.test');
-    });
 });
 
