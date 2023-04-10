@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PagesController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\DashboardAdminController;
 
@@ -17,9 +18,8 @@ use App\Http\Controllers\DashboardAdminController;
 */
 
 
-Route::get('/tes', function () {
-    return view('layouts_user.app');
-});
+
+Route::get('/tes', [PagesController::class, "home"])->name('home');
 
 
 //Authentikasi
