@@ -1,5 +1,5 @@
 @extends('layouts_admin.app')
-@section('title', 'Dashboard')
+@section('title', 'Profile')
 @section('content')
     <section style="background-color: #eee;">
         <form action="{{ route('do.update') }}" method="POST" enctype="multipart/form-data">
@@ -10,10 +10,10 @@
                     <div class="col-lg-4">
                         <div class="card mb-4">
                             <div class="card-body text-center">
-                                <img src="{{ asset('user/' . Auth::user()->avatar) }}" id="preview" class="rounded-circle img-fluid"
-                                    style="width: 150px; height: 150px;" />
+                                <img src="{{ asset('user/' . Auth::user()->avatar) }}" id="preview"
+                                    class="rounded-circle img-fluid" style="width: 150px; height: 150px;" />
                                 <h5 class="my-3">{{ Auth::user()->first_name . ' ' . Auth::user()->last_name }}</h5>
-                                <p class="text-muted mb-3">{{'@' . Auth::user()->username}}</p>
+                                <p class="text-muted mb-3">{{ '@' . Auth::user()->username }}</p>
                                 <div class="d-flex justify-content-center mb-2">
                                     <input type="file" accept="image/*"
                                         class="form-control text-muted @error('avatar') is-invalid @enderror" name="avatar"
@@ -33,7 +33,7 @@
                                     </li>
                                     <li class="list-group-item d-flex justify-content-between align-items-center p-3">
                                         <i class="fab fa-github fa-lg" style="color: #333333;"></i>
-                                        <p class="mb-0">{{'@' . Auth::user()->username }}</p>
+                                        <p class="mb-0">{{ '@' . Auth::user()->username }}</p>
                                     </li>
                                 </ul>
                             </div>
@@ -44,7 +44,8 @@
                             <div class="card-body">
                                 <div class="mb-4">
                                     <label for="firstName" class="form-label">Nama Depan</label>
-                                    <input type="text" class="form-control text-muted @error('firstName') is-invalid @enderror"
+                                    <input type="text"
+                                        class="form-control text-muted @error('firstName') is-invalid @enderror"
                                         name="firstName" id="firstName" aria-describedby="firstNameHelp"
                                         value="{{ Auth::user()->first_name }}">
                                     @error('firstName')
@@ -54,7 +55,8 @@
 
                                 <div class="mb-4">
                                     <label for="lastName" class="form-label">Nama Belakang</label>
-                                    <input type="text" class="form-control text-muted @error('lastName') is-invalid @enderror"
+                                    <input type="text"
+                                        class="form-control text-muted @error('lastName') is-invalid @enderror"
                                         name="lastName" id="lastName" aria-describedby="lastNameHelp"
                                         value="{{ Auth::user()->last_name }}">
                                     @error('lastName')
@@ -64,7 +66,8 @@
 
                                 <div class="mb-4">
                                     <label for="username" class="form-label">Username</label>
-                                    <input type="text" class="form-control text-muted @error('username') is-invalid @enderror"
+                                    <input type="text"
+                                        class="form-control text-muted @error('username') is-invalid @enderror"
                                         name="username" id="username" aria-describedby="usernameHelp"
                                         value="{{ Auth::user()->username }}" disabled>
                                     @error('username')
@@ -74,9 +77,10 @@
 
                                 <div class="mb-4">
                                     <label for="email" class="form-label">Email</label>
-                                    <input type="email" class="form-control text-muted @error('email') is-invalid @enderror"
-                                        name="email" id="email" aria-describedby="emailHelp"
-                                        value="{{ Auth::user()->email }}" disabled>
+                                    <input type="email"
+                                        class="form-control text-muted @error('email') is-invalid @enderror" name="email"
+                                        id="email" aria-describedby="emailHelp" value="{{ Auth::user()->email }}"
+                                        disabled>
                                     @error('email')
                                         <div id="emailHelp" class="form-text">{{ $message }}</div>
                                     @enderror
@@ -104,7 +108,8 @@
 
                                 <div class="mb-4">
                                     <label for="alamat" class="form-label">Alamat</label>
-                                    <input type="alamat" class="form-control text-muted @error('alamat') is-invalid @enderror"
+                                    <input type="alamat"
+                                        class="form-control text-muted @error('alamat') is-invalid @enderror"
                                         name="alamat" id="alamat" value="{{ Auth::user()->alamat }}">
                                     @error('alamat')
                                         <div id="alamatHelp" class="form-text">{{ $message }}</div>
@@ -113,7 +118,8 @@
 
                                 <div class="mb-4">
                                     <label for="telepon" class="form-label">Telepon</label>
-                                    <input type="telepon" class="form-control text-muted @error('telepon') is-invalid @enderror"
+                                    <input type="telepon"
+                                        class="form-control text-muted @error('telepon') is-invalid @enderror"
                                         name="telepon" id="telepon" value="{{ Auth::user()->no_hp }}">
                                     @error('telepon')
                                         <div id="teleponHelp" class="form-text">{{ $message }}</div>
@@ -122,7 +128,8 @@
 
                                 <div class="mb-4">
                                     <label for="password" class="form-label">Password Baru</label>
-                                    <input type="password" class="form-control text-muted @error('password') is-invalid @enderror"
+                                    <input type="password"
+                                        class="form-control text-muted @error('password') is-invalid @enderror"
                                         name="password" id="password">
                                     @error('password')
                                         <div id="passwordHelp" class="form-text">{{ $message }}</div>

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\DashboardAdminController;
 
@@ -28,14 +29,21 @@ Route::middleware(['auth:web', 'isAdmin'])->group(function () {
     Route::get('/dashboard', [DashboardAdminController::class, 'index'])->name('dashboard.admin');
     Route::get('/edit', [DashboardAdminController::class, 'edit'])->name('dashboard.edit');
     Route::put('/update', [DashboardAdminController::class, 'update'])->name('do.update');
-    
-    
+
+    // Kategori
     Route::get('/category', [CategoriesController::class, 'index'])->name('category');
     Route::get('/category/add', [CategoriesController::class, 'create'])->name('category.add');
     Route::post('/category/create', [CategoriesController::class, 'store'])->name('category.create');
     Route::get('/category/edit/{id}', [CategoriesController::class, 'edit'])->name('category.edit');
     Route::put('/category/update/{id}', [CategoriesController::class, 'update'])->name('category.update');
     Route::get('/category/destroy/{id}', [CategoriesController::class, 'destroy'])->name('category.destroy');
+    // Produk
+    Route::get('/product', [ProductsController::class, 'index'])->name('product');
+    Route::get('/product/add', [ProductsController::class, 'create'])->name('product.add');
+    Route::post('/product/create', [ProductsController::class, 'store'])->name('product.create');
+    Route::get('/product/edit/{id_products}', [ProductsController::class, 'edit'])->name('product.edit');
+    Route::put('/product/update/{id_products}', [ProductsController::class, 'update'])->name('product.update');
+    Route::get('/product/destroy/{id_products}', [ProductsController::class, 'destroy'])->name('product.destroy');
 });
 
 Route::middleware(['auth:web'])->group(function () {

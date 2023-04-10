@@ -15,7 +15,8 @@
             </a>
         </li>
         <li>
-            <a href="{{ route('category') }}" class="nav-link {{ set_active(['category','category.add','category.edit']) }}" id="category">
+            <a href="{{ route('category') }}"
+                class="nav-link {{ set_active(['category', 'category.add', 'category.edit']) }}" id="category">
                 <i class='bx bx-category'></i>
                 <span class="links_name">
                     Kategori
@@ -23,7 +24,8 @@
             </a>
         </li>
         <li>
-            <a href="#" class="nav-link" id="product">
+            <a href="{{ route('product') }}"
+                class="nav-link {{ set_active(['product', 'product.add', 'product.edit']) }}" id="product">
                 <i class='bx bx-cart-alt'></i>
                 <span class="links_name">
                     Produk
