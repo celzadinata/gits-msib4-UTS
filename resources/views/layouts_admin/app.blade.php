@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin | @yield('title')</title>
-    <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/admin/css/main.css') }}">
 
     {{-- Javascript --}}
-    <script src="{{asset('assets/js/preview_img.js')}}"></script>
+    <script src="{{asset('assets/admin/js/preview_img.js')}}"></script>
 
     <!-- box icon -->
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>

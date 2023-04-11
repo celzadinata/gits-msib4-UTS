@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\DashboardAdminController;
+use App\Http\Controllers\UsersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,18 +19,26 @@ use App\Http\Controllers\DashboardAdminController;
 */
 
 
-Route::middleware(['auth:web', 'isAdmin'])->group(function () {
-    //Route admin semua ditaro disini
-    //Contoh:
-    //Route::get('/', [ProdukController::class, 'index']);
-    //Route::get('/cart/add/{id}', [CartController::class, 'store']);
-    Route::get('/', function () {
-        return view('admin.test');
-    });
-    Route::get('/dashboard', [DashboardAdminController::class, 'index'])->name('dashboard.admin');
-    Route::get('/edit', [DashboardAdminController::class, 'edit'])->name('dashboard.edit');
-    Route::put('/update', [DashboardAdminController::class, 'update'])->name('do.update');
+Route::get('/tes', function () {
+    return view('layouts_user.app');
+});
 
+
+//Authentikasi
+// Register
+Route::get('/register', [AuthController::class, "register"])->name('register');
+Route::post('/register', [AuthController::class, "doRegister"])->name('do.register');
+// Login
+Route::get('/login', [AuthController::class, "login"])->name('login');
+Route::post('/login', [AuthController::class, "doLogin"])->name('do.login');
+// Logout
+Route::get('/logout', [AuthController::class, "logout"])->name('logout');
+
+
+// Role Penjual
+Route::middleware(['auth:web', 'isAdmin'])->group(function () {
+    // Dashboard
+    Route::get('/dashboard', [DashboardAdminController::class, 'index'])->name('dashboard.admin');
     // Kategori
     Route::get('/category', [CategoriesController::class, 'index'])->name('category');
     Route::get('/category/add', [CategoriesController::class, 'create'])->name('category.add');
@@ -43,23 +52,16 @@ Route::middleware(['auth:web', 'isAdmin'])->group(function () {
     Route::post('/product/create', [ProductsController::class, 'store'])->name('product.create');
     Route::get('/product/edit/{id_products}', [ProductsController::class, 'edit'])->name('product.edit');
     Route::put('/product/update/{id_products}', [ProductsController::class, 'update'])->name('product.update');
-    Route::get('/product/destroy/{id_products}', [ProductsController::class, 'destroy'])->name('product.destroy');
+    // Profile
+    Route::get('/edit', [DashboardAdminController::class, 'edit'])->name('dashboard.edit');
+    Route::put('/update', [DashboardAdminController::class, 'update'])->name('do.update');
 });
 
+// Role Pembeli
 Route::middleware(['auth:web'])->group(function () {
-    //Route pembeli semua ditaro disini
-    //Contoh:
-    //Route::get('/', [ProdukController::class, 'index']);
-    //Route::get('/cart/add/{id}', [CartController::class, 'store']);
     Route::get('/', function () {
         return view('user.test');
     });
+    Route::get('/profile', [UsersController::class, "index"])->name('user.index');
 });
 
-//Auth
-Route::get('/register', [AuthController::class, "register"])->name('register');
-Route::get('/login', [AuthController::class, "login"])->name('login');
-Route::get('/logout', [AuthController::class, "logout"])->name('logout');
-
-Route::post('/register', [AuthController::class, "doRegister"])->name('do.register');
-Route::post('/login', [AuthController::class, "doLogin"])->name('do.login');
