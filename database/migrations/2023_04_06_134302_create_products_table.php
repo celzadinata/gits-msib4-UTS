@@ -20,6 +20,7 @@ return new class extends Migration
             $table->bigInteger('price');
             $table->integer('stock');
             $table->string('slug');
+            $table->string('image')->nullable();
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });

@@ -3,8 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\DashboardAdminController;
+use App\Http\Controllers\UsersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,6 +45,12 @@ Route::middleware(['auth:web', 'isAdmin'])->group(function () {
     Route::get('/category/edit/{id}', [CategoriesController::class, 'edit'])->name('category.edit');
     Route::put('/category/update/{id}', [CategoriesController::class, 'update'])->name('category.update');
     Route::get('/category/destroy/{id}', [CategoriesController::class, 'destroy'])->name('category.destroy');
+    // Produk
+    Route::get('/product', [ProductsController::class, 'index'])->name('product');
+    Route::get('/product/add', [ProductsController::class, 'create'])->name('product.add');
+    Route::post('/product/create', [ProductsController::class, 'store'])->name('product.create');
+    Route::get('/product/edit/{id_products}', [ProductsController::class, 'edit'])->name('product.edit');
+    Route::put('/product/update/{id_products}', [ProductsController::class, 'update'])->name('product.update');
     // Profile
     Route::get('/edit', [DashboardAdminController::class, 'edit'])->name('dashboard.edit');
     Route::put('/update', [DashboardAdminController::class, 'update'])->name('do.update');
@@ -50,6 +58,10 @@ Route::middleware(['auth:web', 'isAdmin'])->group(function () {
 
 // Role Pembeli
 Route::middleware(['auth:web'])->group(function () {
+    Route::get('/', function () {
+        return view('user.test');
+    });
+    Route::get('/profile', [UsersController::class, "index"])->name('user.index');
 });
 
 
