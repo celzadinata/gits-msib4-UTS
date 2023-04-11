@@ -7,10 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin | @yield('title')</title>
     <link rel="stylesheet" href="{{ asset('assets/admin/css/main.css') }}">
-
-    {{-- Javascript --}}
-    <script src="{{asset('assets/admin/js/preview_img.js')}}"></script>
-
     <!-- box icon -->
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
     {{-- Font Awesome --}}
@@ -37,6 +33,8 @@
         {{-- End Content --}}
         @include('sweetalert::alert')
     </section>
+    <script src="{{asset('assets/admin/js/preview_img.js')}}"></script>
+    <script src="{{asset('assets/admin/js/main.js')}}"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"
         integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous">
     </script>

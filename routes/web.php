@@ -19,7 +19,6 @@ use App\Http\Controllers\DashboardAdminController;
 
 
 
-Route::get('/tes', [PagesController::class, "home"])->name('home');
 
 
 //Authentikasi
@@ -52,4 +51,8 @@ Route::middleware(['auth:web', 'isAdmin'])->group(function () {
 // Role Pembeli
 Route::middleware(['auth:web'])->group(function () {
 });
+
+
+
+Route::get('/home', [PagesController::class, "home"])->name('home');
 

@@ -53,7 +53,7 @@
                             @foreach ($category as $c)
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
-                                        <h4 class="panel-title"><a href="#">{{ $c->name }}</a></h4>
+                                        <h4 class="panel-title"><a href="{{ route('product',$c->id) }}">{{ $c->name }}</a></h4>
                                     </div>
                                 </div>
                             @endforeach
@@ -73,6 +73,7 @@
                                             <img src="{{ asset('assets/user/images/home/product1.jpg') }}" alt="" />
                                             <h2>Rp{{ number_format($p->price, 0, '.', '.') }}</h2>
                                             <p>{{ $p->name }}</p>
+                                            <p>{{ $p->categories->name }}</p>
                                             <a href="#" class="btn btn-default add-to-cart"><i
                                                     class="fa fa-shopping-cart"></i>Beli</a>
                                         </div>
