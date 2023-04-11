@@ -131,8 +131,8 @@
                     </div>
                 </div>
                 <div class="card-footer">
-                    <a href="{{ route('product') }}" type="button" class="btn btn-warning"><i
-                            class='nav-icon fas fa-arrow-left'></i> &nbsp; Kembali</a>
+                    <a href="{{ route('product') }}" type="button" class="btn btn-secondary"><i
+                        class='nav-icon fas fa-arrow-left'></i> &nbsp; Kembali</a>
                     <button type="submit" class="btn btn-primary"><i class="nav-icon fas fa-save"></i>
                         &nbsp;
                         Simpan</button>

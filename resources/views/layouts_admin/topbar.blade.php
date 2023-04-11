@@ -4,10 +4,7 @@
     </div>
     <div class="search_wrapper">
         <label>
-            <span>
-                <i class='bx bx-search'></i>
-            </span>
-            <input type="search" placeholder="Search...">
+            <input type="search" class="form-control light-table-filter px-3" data-table="table" placeholder="Cari...">
         </label>
     </div>
     <div class="user_wrapper">
