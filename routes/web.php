@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PagesController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\DashboardAdminController;
@@ -19,9 +20,7 @@ use App\Http\Controllers\UsersController;
 */
 
 
-Route::get('/tes', function () {
-    return view('layouts_user.app');
-});
+
 
 
 //Authentikasi
@@ -64,4 +63,8 @@ Route::middleware(['auth:web'])->group(function () {
     });
     Route::get('/profile', [UsersController::class, "index"])->name('user.index');
 });
+
+
+
+Route::get('/home', [PagesController::class, "home"])->name('home');
 
