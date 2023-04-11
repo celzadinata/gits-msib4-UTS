@@ -61,7 +61,7 @@ class ProductsController extends Controller
 
         products::create($validated);
 
-        return redirect()->route('product')->with('success', 'Product created successfully.');
+        return redirect()->route('product')->with('success', 'Berhasil Menambah Produk!');
     }
 
     /**
@@ -125,7 +125,7 @@ class ProductsController extends Controller
             'slug' => $validated['slug'],
         ]);
 
-        return redirect()->route('product')->with('success', 'Product updated successfully.');
+        return redirect()->route('product')->with('warning', 'Berhasil Mengupdate Produk!');
     }
 
     /**
@@ -138,7 +138,7 @@ class ProductsController extends Controller
     {
         $product = products::find($id_products);
         $product->delete();
-
-        return redirect()->route('product')->with('success', 'Product deleted successfully.');
+        alert()->error('Berhasil Menghapus Produk!');
+        return redirect()->route('product');
     }
 }

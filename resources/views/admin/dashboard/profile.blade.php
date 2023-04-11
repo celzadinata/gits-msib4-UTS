@@ -146,7 +146,7 @@
                                     @enderror
                                 </div>
 
-                                <button type="submit" class="btn btn-primary">Simpan</button>
+                                <button type="submit" class="btn btn-primary"><i class="nav-icon fas fa-save"></i> Simpan</button>
 
                             </div>
                         </div>

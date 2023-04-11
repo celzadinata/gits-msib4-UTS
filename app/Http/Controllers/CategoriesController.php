@@ -16,7 +16,7 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        $category = categories::all();
+        $category = categories::paginate(5);
         return view('admin.category.index',compact('category') );
     }
 
@@ -99,7 +99,7 @@ class CategoriesController extends Controller
     public function destroy($id)
     {
         categories::destroy($id);
-        alert()->error('Title','Berhasil Menghapus');;
+        alert()->error('Berhasil Menghapus Kategori!');
         return back();
     }
 }
