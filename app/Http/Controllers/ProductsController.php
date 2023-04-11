@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\users;
 use App\Models\products;
 use App\Models\categories;
-use App\Models\users;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProductsController extends Controller
 {
@@ -16,7 +17,7 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        $products = products::all();
+        $products = products::where('users_id','=',Auth::user()->id)->Paginate(5);
         return view('admin.product.index', compact('products'));
     }
 
