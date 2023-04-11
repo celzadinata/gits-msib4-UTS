@@ -21,11 +21,11 @@
                             <td class="text-center">{{ $loop->iteration }}</td>
                             <td>{{ $c->name }}</td>
                             <td>
-                                <a href="{{ route('category.edit', $c->id) }}" class="btn btn-warning btn-sm"><i
-                                        class="fa-solid fa-pen-to-square"></i>
+                                <a href="{{ route('category.edit', $c->id) }}" class="btn btn-warning btn-sm">
+                                    <i class="fa-solid fa-pen-to-square"></i>
                                 </a>
-                                <a href="{{ route('category.destroy', $c->id) }}" class="btn btn-danger btn-sm"><i
-                                        class="fa-solid fa-trash-can"></i>
+                                <a href="{{ route('category.destroy', $c->id) }}" class="btn btn-danger btn-sm">
+                                    <i class="fa-solid fa-trash-can"></i>
                                 </a>
                             </td>
                         </tr>
