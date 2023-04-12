@@ -120,19 +120,20 @@
                     <div class="mb-3">
                         <div class="form-group">
                             <label for="image">Image :</label>
+                            <input type="file" name="image" id="image" class="form-control">
+
                             @if ($product->image)
                                 <br>
                                 <img src="{{ asset('images/' . $product->image) }}" alt="{{ $product->name }}"
                                     width="200">
                                 <br><br>
                             @endif
-                            <input type="file" name="image" id="image" class="form-control-file">
                         </div>
                     </div>
                 </div>
                 <div class="card-footer">
                     <a href="{{ route('product') }}" type="button" class="btn btn-secondary"><i
-                        class='nav-icon fas fa-arrow-left'></i> &nbsp; Kembali</a>
+                            class='nav-icon fas fa-arrow-left'></i> &nbsp; Kembali</a>
                     <button type="submit" class="btn btn-primary"><i class="nav-icon fas fa-save"></i>
                         &nbsp;
                         Simpan</button>

@@ -21,9 +21,9 @@ class DashboardAdminController extends Controller
      */
     public function index()
     {
-
+        $log = Auth::id();
         $category = categories::count();
-        $product = products::where('users_id','=',Auth::user()->id)->count();
+        $product = products::where('users_id', $log)->count();
         $transaction = transactions::join('detail_transactions', 'transactions.id', '=', 'detail_transactions.transactions_id')
             ->join('products', 'detail_transactions.products_id', '=', 'products.id_products')
             ->select('transactions.*', 'products.*')
