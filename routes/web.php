@@ -63,7 +63,6 @@ Route::middleware(['auth:web', 'isAdmin'])->group(function () {
 
 // Role Pembeli
 Route::middleware(['auth:web'])->group(function () {
-    Route::get('/home', [PagesController::class, "home"])->name('home');
     Route::get('/profile', [UsersController::class, "index"])->name('user.index');
 
     Route::get('/cart', [DetailTransactionsController::class, "index"])->name('user.cart');
@@ -72,6 +71,10 @@ Route::middleware(['auth:web'])->group(function () {
     Route::post('/transactions/store', [TransactionsController::class, "store"])->name('transaction');
 });
 
+Route::get('/', [PagesController::class, "home"])->name('page.home');
+Route::get('/product-all', [PagesController::class, "product_all"])->name('page.product_all');
+Route::get('/product/{id}', [PagesController::class, "product"])->name('page.product');
+Route::get('/product-detail/{id}', [PagesController::class, "product_detail"])->name('page.product_detail');
 
 
 

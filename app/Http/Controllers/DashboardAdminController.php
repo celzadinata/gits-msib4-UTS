@@ -22,8 +22,8 @@ class DashboardAdminController extends Controller
     public function index()
     {
         $category = categories::count();
-        $product = products::count();
-        $transaction = transactions::count();
+        $product = products::where('users_id','=',Auth::user()->id)->count();
+        $transaction = transactions::where('users_id','=',Auth::user()->id)->count();;
 
         $total_harga = transactions::select(DB::raw("CAST(SUM(total) as int) as total_harga"))
         ->GroupBy(DB::raw("Month(created_at)"))
@@ -35,7 +35,7 @@ class DashboardAdminController extends Controller
 
         return view('admin.dashboard.index',compact('category','product','transaction','total_harga','bulan'));
     }
-    
+
     /**
      * Show the form for creating a new resource.
      *
