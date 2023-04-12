@@ -1,3 +1,5 @@
+<header id="header">
+    <!--header-->
 <div class="header-middle">
     <!--header-middle-->
     <div class="container">
@@ -28,34 +30,39 @@
             </div>
         </div>
     </div>
-</div>
-<!--/header-middle-->
+    <!--/header-middle-->
 
-<div class="header-bottom">
-    <!--header-bottom-->
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-9">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                </div>
-                <div class="mainmenu pull-left">
-                    <ul class="nav navbar-nav collapse navbar-collapse">
-                        <li><a href="{{ url('/') }}" class="active">Home</a></li>
-                        <li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
-                            <ul role="menu" class="sub-menu">
-                                <li><a href="{{ route('user.cart') }}">Cart</a></li>
-                            </ul>
-                        </li>
-                    </ul>
+    <div class="header-bottom">
+        <!--header-bottom-->
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-9">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse"
+                            data-target=".navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <div class="mainmenu pull-left">
+                        <ul class="nav navbar-nav collapse navbar-collapse">
+                            <li><a href="{{ route('page.home') }}" class="{{ set_active('page.home') }}">Home</a></li>
+                            <li><a href="{{ route('page.product_all') }}"
+                                    class="{{ set_active(['page.product_all', 'page.product']) }}">Produk</a></li>
+                            <li class="dropdown"><a href="#">Kategori<i class="fa fa-angle-down"></i></a>
+                                <ul role="menu" class="sub-menu">
+                                    @foreach ($category as $c)
+                                        <li><a href="{{ route('page.product', $c->id) }}">{{ $c->name }}</a></li>
+                                    @endforeach
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<!--/header-bottom-->
+    <!--/header-bottom-->
+</header>

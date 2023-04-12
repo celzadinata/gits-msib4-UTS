@@ -22,10 +22,6 @@ use App\Http\Controllers\UsersController;
 |
 */
 
-
-
-
-
 //Authentikasi
 Route::middleware(['guest'])->group(function () {
 // Register
@@ -78,7 +74,7 @@ Route::middleware(['auth:web'])->group(function () {
 Route::get('/', [PagesController::class, "home"])->name('page.home');
 Route::get('/product-all', [PagesController::class, "product_all"])->name('page.product_all');
 Route::get('/product/{id}', [PagesController::class, "product"])->name('page.product');
-Route::get('/product-detail/{id}', [PagesController::class, "product_detail"])->name('page.product_detail');
+Route::get('/product-detail/{id_products}', [PagesController::class, "product_detail"])->name('page.product_detail');
 
 
 

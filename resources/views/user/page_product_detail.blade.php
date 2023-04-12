@@ -1,4 +1,5 @@
 @extends('layouts_user.app')
+@section('title','Produk')
 @section('content')
     <section>
         <div class="container">

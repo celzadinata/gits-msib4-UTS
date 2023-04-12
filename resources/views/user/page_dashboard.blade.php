@@ -1,4 +1,5 @@
 @extends('layouts_user.app')
+@section('title','Home')
 @section('content')
     <section id="slider">
         {{-- Slider --}}
