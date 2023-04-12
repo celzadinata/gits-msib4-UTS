@@ -1,4 +1,5 @@
 @extends('layouts_user.app')
+@section('title','Produk')
 @section('content')
     <section>
         <div class="container">
@@ -26,8 +27,7 @@
                         <!--product-details-->
                         <div class="col-sm-5">
                             <div class="view-product">
-                                <img src="{{ asset('assets/user/images/product-details/1.jpg') }}" alt="" />
-                                <h3>ZOOM</h3>
+                                <img src="{{ url('images/' . $product->image) }}" alt="" />
                             </div>
                             <div id="similar-product" class="carousel slide" data-ride="carousel">
 
@@ -84,11 +84,11 @@
                                 <!--/product-information-->
                                 <img src="{{ asset('assets/user/images/product-details/new.jpg') }}" class="newarrival"
                                     alt="" />
-                                <h2>Anne Klein Sleeveless Colorblock Scuba</h2>
-                                <p>Web ID: 1089772</p>
+                                <h2>{{ $product->name }}</h2>
+                                {{-- <p>Web ID: 1089772</p> --}}
                                 <img src="{{ asset('assets/user/images/product-details/rating.png') }}" alt="" />
                                 <span>
-                                    <span>US $59</span>
+                                    <span>Rp{{ number_format($product->price, 0, '.', '.') }}</span>
                                     <label>Quantity:</label>
                                     <input type="text" value="3" />
                                     <button type="button" class="btn btn-fefault cart">

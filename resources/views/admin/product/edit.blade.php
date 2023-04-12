@@ -126,13 +126,14 @@
                                     width="200">
                                 <br><br>
                             @endif
-                            <input type="file" name="image" id="image" class="form-control-file">
+                            <input type="file" name="image" id="image"
+                                class="form-control @error('image') is-invalid @enderror">
                         </div>
                     </div>
                 </div>
                 <div class="card-footer">
                     <a href="{{ route('product') }}" type="button" class="btn btn-secondary"><i
-                        class='nav-icon fas fa-arrow-left'></i> &nbsp; Kembali</a>
+                            class='nav-icon fas fa-arrow-left'></i> &nbsp; Kembali</a>
                     <button type="submit" class="btn btn-primary"><i class="nav-icon fas fa-save"></i>
                         &nbsp;
                         Simpan</button>

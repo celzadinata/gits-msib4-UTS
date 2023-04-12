@@ -1,4 +1,5 @@
 @extends('layouts_user.app')
+@section('title','Produk')
 @section('content')
     <section>
         <div class="container">
@@ -23,7 +24,7 @@
                 <div class="col-sm-9 padding-right">
                     <div class="features_items">
                         <!--features_items-->
-                        <h2 class="title text-center">Produk</h2>
+                        <h2 class="title text-center">{{ $categories->name }}</h2>
                         @foreach ($product as $p)
                             <div class="col-sm-4">
                                 <div class="product-image-wrapper">

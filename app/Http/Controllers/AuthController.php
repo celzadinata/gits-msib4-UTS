@@ -68,8 +68,13 @@ class AuthController extends Controller
         ]);
 
         if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
-            return redirect()->intended('admin');
+            if (Auth::user()->role == 'penjual') {
+                return redirect()->route('dashboard.admin');
+            } else if(Auth::user()->role == 'pembeli') {
+                return redirect()->route('page.home');
+                // $request->session()->regenerate();
+                // return redirect()->intended('admin');
+            }
         }
         alert()->error('Ada yang salah cuy');
         return back()->withErrors([
@@ -83,6 +88,5 @@ class AuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         return redirect('/')->with('success', 'Berhasil Log out yagesya');
-
     }
 }

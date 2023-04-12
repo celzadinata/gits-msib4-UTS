@@ -22,15 +22,16 @@ class PagesController extends Controller
     }
 
     public function product($id){
+        $categories = categories::find($id);
         $category = categories::paginate(5);
         $product = products::where('categories_id',$id)->get();
         $product_news = products::orderBy('created_at')->paginate(5);
-        return view('user.page_product',compact('category','product','product_news'));
+        return view('user.page_product',compact('categories','category','product','product_news'));
     }
 
-    public function product_detail($id){
+    public function product_detail($id_products){
         $category = categories::paginate(5);
-        $product = products::where('id_products',$id)->get();
+        $product = products::find($id_products);
         return view('user.page_product_detail',compact('product','category'));
     }
 }

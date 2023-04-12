@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\users;
+use App\Models\categories;
 use Illuminate\Http\Request;
 
 class UsersController extends Controller
@@ -14,7 +15,8 @@ class UsersController extends Controller
      */
     public function index()
     {
-        return view('user.profile');
+        $category = categories::paginate(5);
+        return view('user.profile',compact('category'));
     }
 
     /**

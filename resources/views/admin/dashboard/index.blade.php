@@ -25,7 +25,7 @@
         </div>
         <div class="box">
             <div class="right_side">
-                <div class="numbers">{{ $user }}</div>
+                <div class="numbers">{{ $transaction }}</div>
                 <div class="box_topic">Total Transaksi</div>
             </div>
             <i class='bx bx-book-open'></i>
