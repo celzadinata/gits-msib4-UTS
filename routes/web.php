@@ -64,7 +64,6 @@ Route::middleware(['auth:web', 'isAdmin'])->group(function () {
 // Role Pembeli
 Route::middleware(['auth:web'])->group(function () {
     Route::get('/profile', [UsersController::class, "index"])->name('user.index');
-
     Route::get('/cart', [DetailTransactionsController::class, "index"])->name('user.cart');
     Route::get('/cart-add/{id}', [DetailTransactionsController::class, "store"])->name('cart.store');
     Route::get('/cart/remove/{id}', [DetailTransactionsController::class, 'destroy'])->name('cart.remove');
