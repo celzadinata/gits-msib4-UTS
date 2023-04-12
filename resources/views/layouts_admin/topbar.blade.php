@@ -8,6 +8,7 @@
         </label>
     </div>
     <div class="user_wrapper">
+        <span>{{ Auth::user()->username }}</span>
         <img src="{{ asset('user/' . Auth::user()->avatar) }}" alt="">
     </div>
 </div>

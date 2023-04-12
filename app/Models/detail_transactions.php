@@ -4,11 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use App\Models\transactions;
+// 
 class detail_transactions extends Model
 {
     use HasFactory;
     protected $fillable = [
+
         'products_id',
         'transactions_id',
         'qty', 

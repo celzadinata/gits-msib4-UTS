@@ -1,5 +1,5 @@
 @extends('layouts_admin.app')
-@section('title','Dashboard')
+@section('title', 'Dashboard')
 @section('content')
     <div class="card-boxes">
         <div class="box">
@@ -16,13 +16,13 @@
             </div>
             <i class='bx bx-cart-alt'></i>
         </div>
-        <div class="box">
+        {{-- <div class="box">
             <div class="right_side">
                 <div class="numbers">0</div>
                 <div class="box_topic">Total Pembeli</div>
             </div>
             <i class='bx bx-user'></i>
-        </div>
+        </div> --}}
         <div class="box">
             <div class="right_side">
                 <div class="numbers">{{ $transaction }}</div>
@@ -41,31 +41,29 @@
     </div>
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script type="text/javascript">
-        var pendapatan = <?php echo json_encode($total_harga) ?>;
-        var bulan = <?php echo json_encode($bulan) ?>;
-        Highcharts.chart('grafik',{
+        var pendapatan = <?php echo json_encode($total_harga); ?>;
+        var bulan = <?php echo json_encode($bulan); ?>;
+        Highcharts.chart('grafik', {
             title: {
                 text: 'Grafik pendapatan Bulanan'
             },
             xAxis: {
-                categories : bulan
+                categories: bulan
             },
             yAxis: {
-                title:{
-                text: 'Nominal Pendapatan Bulanan'
+                title: {
+                    text: 'Nominal Pendapatan Bulanan'
                 }
             },
-            plotOptions:{
+            plotOptions: {
                 series: {
                     allowPointSelect: true
                 }
             },
-            series : [
-                {
-                    name: 'Nominal Pendapatan',
-                    data: pendapatan
-                }
-            ]
+            series: [{
+                name: 'Nominal Pendapatan',
+                data: pendapatan
+            }]
         })
     </script>
 @endsection
