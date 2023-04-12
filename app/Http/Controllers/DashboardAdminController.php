@@ -122,7 +122,7 @@ class DashboardAdminController extends Controller
         }
         $penjual->update();
 
-        return redirect()->route('dashboard.edit')->with('success', 'Berhasil mengubah informasi!');
+        return back()->with('success', 'Berhasil mengubah informasi!');
     }
 
     /**

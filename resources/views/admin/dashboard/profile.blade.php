@@ -32,8 +32,8 @@
                                         <p class="mb-0">{{ Auth::user()->email }}</p>
                                     </li>
                                     <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                                        <i class="fab fa-github fa-lg" style="color: #333333;"></i>
-                                        <p class="mb-0">{{ '@' . Auth::user()->username }}</p>
+                                        <i class="fas fa-home fa-lg text-primary"></i>
+                                        <a class="btn btn-outline-primary" href="{{route('page.home')}}">User Homepage</a>
                                     </li>
                                 </ul>
                             </div>
