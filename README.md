@@ -1,4 +1,4 @@
-# Content Management System (CMS)
+# TOKOKU ( E-Commerce )
 Kelompok 1
 ## Stack Yang Digunakan
 1. Template Bootsrap 5
