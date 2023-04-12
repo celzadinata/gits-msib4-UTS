@@ -9,7 +9,7 @@ class transactions extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'date', 'payment', 'total'
+        'id', 'date', 'payment', 'total'
     ];
 
     public function detail_transactions()

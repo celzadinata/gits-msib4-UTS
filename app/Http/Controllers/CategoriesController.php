@@ -16,7 +16,7 @@ class CategoriesController extends Controller
     public function index()
     {
         $category = categories::all();
-        return view('admin.category.index',compact('category') );
+        return view('admin.category.index', compact('category'));
     }
 
     /**
@@ -43,7 +43,6 @@ class CategoriesController extends Controller
         ]);
 
         categories::create($request->all());
-
         return redirect()->route('category')->with('success', 'Berhasil Menambah Kategori!');
     }
 
@@ -98,7 +97,7 @@ class CategoriesController extends Controller
     public function destroy($id)
     {
         categories::destroy($id);
-        alert()->error('Title','Berhasil Menghapus');;
+        alert()->error('Title', 'Berhasil Menghapus');;
         return back();
     }
 }

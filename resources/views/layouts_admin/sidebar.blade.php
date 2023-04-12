@@ -15,7 +15,8 @@
             </a>
         </li>
         <li>
-            <a href="{{ route('category') }}" class="nav-link {{ set_active(['category','category.add','category.edit']) }}" id="category">
+            <a href="{{ route('category') }}"
+                class="nav-link {{ set_active(['category', 'category.add', 'category.edit']) }}" id="category">
                 <i class='bx bx-category'></i>
                 <span class="links_name">
                     Kategori
@@ -31,7 +32,7 @@
             </a>
         </li>
         <li>
-            <a href="#" class="nav-link" id="transaction">
+            <a href="{{ route('showtr') }}" class="nav-link" id="transaction">
                 <i class='bx bx-book-open'></i>
                 <span class="links_name">
                     Transaksi

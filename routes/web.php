@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\DashboardAdminController;
+use App\Http\Controllers\TransactionsController;
+use App\Http\Controllers\DetailTransactionsController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -28,14 +31,18 @@ Route::middleware(['auth:web', 'isAdmin'])->group(function () {
     Route::get('/dashboard', [DashboardAdminController::class, 'index'])->name('dashboard.admin');
     Route::get('/edit', [DashboardAdminController::class, 'edit'])->name('dashboard.edit');
     Route::put('/update', [DashboardAdminController::class, 'update'])->name('do.update');
-    
-    
+
+
     Route::get('/category', [CategoriesController::class, 'index'])->name('category');
     Route::get('/category/add', [CategoriesController::class, 'create'])->name('category.add');
     Route::post('/category/create', [CategoriesController::class, 'store'])->name('category.create');
     Route::get('/category/edit/{id}', [CategoriesController::class, 'edit'])->name('category.edit');
     Route::put('/category/update/{id}', [CategoriesController::class, 'update'])->name('category.update');
     Route::get('/category/destroy/{id}', [CategoriesController::class, 'destroy'])->name('category.destroy');
+
+    // Route transaksi
+    Route::get('/transaction', [TransactionsController::class, 'index'])->name('showtr');
+    Route::get('/transaction/{id}', [DetailTransactionsController::class, 'show']);
 });
 
 Route::middleware(['auth:web'])->group(function () {
