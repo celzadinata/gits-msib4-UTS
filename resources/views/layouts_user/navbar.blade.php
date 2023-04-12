@@ -1,31 +1,31 @@
 <header id="header">
     <!--header-->
-    <div class="header-middle">
-        <!--header-middle-->
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-4">
-                    <div class="logo pull-left">
-                        <a href="{{ route('page.home') }}"><img src="{{ asset('assets/user/images/home/logo.png') }}"
-                                alt="" /></a>
-                    </div>
+<div class="header-middle">
+    <!--header-middle-->
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="logo pull-left">
+                    <a href="{{ url('/') }}"><img src="{{ asset('assets/user/images/home/logo.png') }}"
+                            alt="" /></a>
                 </div>
-                <div class="col-sm-8">
-                    <div class="shop-menu pull-right">
-                        <ul class="nav navbar-nav">
-                            <li><a class="{{ set_active('user.index') }}" href="{{ route('user.index') }}"><i
-                                        class="fa fa-user"></i> Akun</a></li>
-                            <li><a class="{{ set_active('user.cart') }}" href="{{ route('user.cart') }}"><i
-                                        class="fa fa-shopping-cart"></i> Keranjang</a></li>
-                            {{-- <li><a href="cart.html"><i class="fa fa-crosshairs"></i> Cart</a></li> --}}
-                            @auth
-                                <li><a href="{{ route('logout') }}"><i class="fa fa-lock"></i> Logout</a></li>
-                            @endauth
-                            @guest
-                                <li><a href="{{ route('login') }}"><i class="fa fa-lock"></i> Login</a></li>
-                            @endguest
-                        </ul>
-                    </div>
+            </div>
+            <div class="col-sm-8">
+                <div class="shop-menu pull-right">
+                    <ul class="nav navbar-nav">
+                        @auth
+                            <li><a href="{{ route('user.index') }}"><i class="fa fa-user"></i> Account</a></li>
+                            <li><a href="{{ route('user.cart') }}"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+                            @if (Auth::user()->role == 'penjual')
+                            <li><a href="{{ route('dashboard.admin') }}"><i class="fa fa-wrench"></i> Admin CMS</a></li>
+                            @endif
+                            <li><a href="{{ route('logout') }}"><i class="fa fa-sign-out"></i> Logout</a></li>
+                        @endauth
+                        @guest
+                            <li><a href="{{ route('login') }}"><i class="fa fa-lock"></i> Login</a></li>
+                            <li><a href="{{ route('register') }}"><i class="fa fa-users"></i> Register</a></li>
+                        @endguest
+                    </ul>
                 </div>
             </div>
         </div>
