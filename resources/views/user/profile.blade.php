@@ -13,8 +13,13 @@
                                 <div class="col-lg-4">
                                     <div class="card mb-4">
                                         <div class="card-body text-center">
+                                            @if(Auth::user()->avatar == 'default')
+                                            <img src="{{ asset('assets/user/images/user.png') }}" id="preview"
+                                                class="rounded-circle img-fluid" style="width: 150px; height: 150px;" />
+                                            @else
                                             <img src="{{ asset('user/' . Auth::user()->avatar) }}" id="preview"
                                                 class="rounded-circle img-fluid" style="width: 150px; height: 150px;" />
+                                            @endif
                                             <h5 class="my-3">
                                                 {{ Auth::user()->first_name . ' ' . Auth::user()->last_name }}</h5>
                                             <p class="text-muted mb-3">{{ '@' . Auth::user()->username }}</p>

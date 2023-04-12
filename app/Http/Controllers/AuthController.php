@@ -72,8 +72,6 @@ class AuthController extends Controller
                 return redirect()->route('dashboard.admin');
             } else if(Auth::user()->role == 'pembeli') {
                 return redirect()->route('page.home');
-                // $request->session()->regenerate();
-                // return redirect()->intended('admin');
             }
         }
         alert()->error('Ada yang salah cuy');
