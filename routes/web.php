@@ -6,6 +6,8 @@ use App\Http\Controllers\PagesController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\DashboardAdminController;
+use App\Http\Controllers\DetailTransactionsController;
+use App\Http\Controllers\TransactionsController;
 use App\Http\Controllers\UsersController;
 
 /*
@@ -63,6 +65,11 @@ Route::middleware(['auth:web', 'isAdmin'])->group(function () {
 Route::middleware(['auth:web'])->group(function () {
     Route::get('/home', [PagesController::class, "home"])->name('home');
     Route::get('/profile', [UsersController::class, "index"])->name('user.index');
+
+    Route::get('/cart', [DetailTransactionsController::class, "index"])->name('user.cart');
+    Route::get('/cart-add/{id}', [DetailTransactionsController::class, "store"])->name('cart.store');
+    Route::get('/cart/remove/{id}', [DetailTransactionsController::class, 'destroy'])->name('cart.remove');
+    Route::post('/transactions/store', [TransactionsController::class, "store"])->name('transaction');
 });
 
 

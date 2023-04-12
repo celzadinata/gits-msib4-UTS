@@ -71,7 +71,7 @@ class AuthController extends Controller
             $request->session()->regenerate();
             return redirect()->intended('admin');
         }
-
+        alert()->error('Ada yang salah cuy');
         return back()->withErrors([
             'email' => 'Email atau password salah!',
         ])->onlyInput('email');
@@ -82,6 +82,6 @@ class AuthController extends Controller
         Auth::guard('web')->logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect('/');
+        return redirect('/')->with('success', 'Berhasil Log out yagesya');
     }
 }
