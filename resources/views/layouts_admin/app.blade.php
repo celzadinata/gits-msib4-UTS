@@ -7,10 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin | @yield('title')</title>
     <link rel="stylesheet" href="{{ asset('assets/admin/css/main.css') }}">
-
-    {{-- Javascript --}}
-    <script src="{{asset('assets/admin/js/preview_img.js')}}"></script>
-
     <!-- box icon -->
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
     {{-- Font Awesome --}}
@@ -20,7 +16,6 @@
     {{-- Bootsrap 5 --}}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-
 </head>
 
 <body>
@@ -37,6 +32,13 @@
         {{-- End Content --}}
         @include('sweetalert::alert')
     </section>
+    {{-- Profile JS --}}
+    <script src="{{ asset('assets/admin/js/preview_img.js') }}"></script>
+    {{-- Admin Main JS --}}
+    <script src="{{ asset('assets/admin/js/main.js') }}"></script>
+    {{-- Search JS --}}
+    <script src="{{ asset('assets/admin/js/seacrh.js') }}"></script>
+    {{-- Bootstrap 5 --}}
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"
         integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous">
     </script>

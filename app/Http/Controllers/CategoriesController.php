@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\categories;
+use App\Models\transactions;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -15,8 +16,11 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        $category = categories::all();
+
+
+        $category = categories::paginate(5);
         return view('admin.category.index',compact('category') );
+
     }
 
     /**
@@ -43,7 +47,6 @@ class CategoriesController extends Controller
         ]);
 
         categories::create($request->all());
-
         return redirect()->route('category')->with('success', 'Berhasil Menambah Kategori!');
     }
 
@@ -98,7 +101,7 @@ class CategoriesController extends Controller
     public function destroy($id)
     {
         categories::destroy($id);
-        alert()->error('Title','Berhasil Menghapus');;
+        alert()->error('Berhasil Menghapus Kategori!');
         return back();
     }
 }

@@ -2,8 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\detail_transactions;
+use App\Models\products;
 use App\Models\transactions;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Date;
+
 
 class TransactionsController extends Controller
 {
@@ -14,7 +20,16 @@ class TransactionsController extends Controller
      */
     public function index()
     {
-        //
+        // Dapat id yang login
+        $penjual = Auth::id();
+
+        // Tampilkan data transaksi punya user yang login
+        $transactionsModel = transactions::join('detail_transactions', 'transactions.id', '=', 'detail_transactions.transactions_id')
+            ->join('products', 'detail_transactions.products_id', '=', 'products.id_products')
+            ->select('transactions.*', 'products.*')
+            ->where('products.users_id', '=', $penjual)->get();
+
+        return view('/admin/transactions_n_detail/index', compact('transactionsModel'));
     }
 
     /**
@@ -35,7 +50,39 @@ class TransactionsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $transactions = transactions::create([
+            'users_id' => Auth::user()->id,
+            'date' => Date::now(),
+            'payment' => $request->payment,
+            'total' => $request->payment,
+        ]);
+        $cart_items = detail_transactions::where('transactions_id', null)->get();
+
+        foreach ($cart_items as $keyy => $itemm) {
+            $product = products::find($itemm->products_id);
+            $validation = products::find($itemm->products_id);
+            if ($product->stock < $request->input('quantity' . $keyy)) {
+                alert()->error('Ada produk yang kekurangan stok, silahkan cek kembali persediaan produk');
+                return back();
+            }
+        }
+        
+        foreach ($cart_items as $key => $item) {
+            $product = products::find($item->products_id);
+            if ($product->stock >= $request->input('quantity' . $key)) {
+                $product->stock -= $request->input('quantity' . $key);
+                $product->update();
+                $item->transactions_id = $transactions->id;
+                $item->qty = $request->input('quantity' . $key);
+                $item->sub_total = $request->input('sub_total' . $key) * $request->input('quantity' . $key);
+                $item->update();
+            } else {
+                alert()->error('Ada produk yang kekurangan stok, silahkan cek kembali persediaan produk');
+                return back();
+            }
+        }
+
+        return back();
     }
 
     /**
