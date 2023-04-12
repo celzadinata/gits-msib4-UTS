@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\detail_transactions;
 use App\Models\products;
+use App\Models\categories;
 use Illuminate\Http\Request;
+use App\Models\detail_transactions;
 
 class DetailTransactionsController extends Controller
 {
@@ -18,6 +19,7 @@ class DetailTransactionsController extends Controller
         $payload['cart_items'] = detail_transactions::with('produk')->where('transactions_id', null)->get();
         $payload['total'] = 0;
         $payload['produk'] = products::find('B040');
+        $payload['category'] = categories::paginate(5);
         // dd($payload['cart_items']->toArray());
         return view('user.cart', $payload);
     }
@@ -31,7 +33,7 @@ class DetailTransactionsController extends Controller
     {
         //
     }
-    
+
     /**
      * Store a newly created resource in storage.
      *
@@ -46,7 +48,7 @@ class DetailTransactionsController extends Controller
             alert()->error('Persediaan barang tidak ada');
             return back();
         }
-        
+
         $ifDuplicate = detail_transactions::where(['products_id' => $id, 'transactions_id' => null])->first();
 
         if ($ifDuplicate) {
@@ -61,7 +63,7 @@ class DetailTransactionsController extends Controller
                 'sub_total' => $produk->price,
             ]);
         }
-        
+
         return back();
     }
 
