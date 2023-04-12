@@ -35,9 +35,12 @@ class AuthController extends Controller
             'avatar' => 'mimes:jpg,jpeg,png|max:2048'
         ]);
 
-        $imgUrl = time() . '-' . $request->username . '.' . $request->avatar->extension();
+        $imgUrl = 'default';
 
-        $request->avatar->move(public_path('user'), $imgUrl);
+        if ($request->avatar) {
+            $imgUrl = time() . '-' . $request->username . '.' . $request->avatar->extension();
+            $request->avatar->move(public_path('user'), $imgUrl);
+        }
 
         $user = users::create([
             'first_name' => $request->firstName,
@@ -68,7 +71,7 @@ class AuthController extends Controller
             $request->session()->regenerate();
             return redirect()->intended('admin');
         }
-
+        alert()->error('Ada yang salah cuy');
         return back()->withErrors([
             'email' => 'Email atau password salah!',
         ])->onlyInput('email');
@@ -79,6 +82,7 @@ class AuthController extends Controller
         Auth::guard('web')->logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect('/');
+        return redirect('/')->with('success', 'Berhasil Log out yagesya');
+
     }
 }

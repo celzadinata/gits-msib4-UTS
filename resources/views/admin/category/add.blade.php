@@ -36,8 +36,8 @@
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
-                    <a href="{{ route('category') }}" type="button" class="btn btn-secondary text-light"
-                        data-bs-dismiss="modal"><i class='nav-icon fas fa-arrow-left'></i> &nbsp; Kembali</a>
+                    <a href="{{ route('category') }}" type="button" class="btn btn-secondary"><i
+                        class='nav-icon fas fa-arrow-left'></i> &nbsp; Kembali</a>
                     <button type="submit" class="btn btn-primary"><i class="nav-icon fas fa-save"></i>
                         &nbsp;
                         Simpan</button>

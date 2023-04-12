@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\detail_transactions;
+
 use Illuminate\Support\Facades\DB;
+use App\Models\products;
+use App\Models\categories;
 use Illuminate\Http\Request;
+use App\Models\detail_transactions;
 
 class DetailTransactionsController extends Controller
 {
@@ -15,7 +18,15 @@ class DetailTransactionsController extends Controller
      */
     public function index()
     {
-        return view('/admin/transactions_n_detail/index_detail');
+
+
+        $payload['cart_items'] = detail_transactions::with('produk')->where('transactions_id', null)->get();
+        $payload['total'] = 0;
+        $payload['produk'] = products::find('B040');
+        $payload['category'] = categories::paginate(5);
+        // dd($payload['cart_items']->toArray());
+        return view('user.cart', $payload);
+
     }
 
     /**
@@ -34,9 +45,31 @@ class DetailTransactionsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
-        //
+        $produk = products::find($id);
+
+        if ($produk->stock < 1) {
+            alert()->error('Persediaan barang tidak ada');
+            return back();
+        }
+
+        $ifDuplicate = detail_transactions::where(['products_id' => $id, 'transactions_id' => null])->first();
+
+        if ($ifDuplicate) {
+            $ifDuplicate->qty += 1;
+            $ifDuplicate->sub_total += $produk->price;
+            $ifDuplicate->update();
+        } else {
+            detail_transactions::create([
+                'products_id' => $id,
+                'transactions_id' => null,
+                'qty' => 1,
+                'sub_total' => $produk->price,
+            ]);
+        }
+
+        return back();
     }
 
     /**
@@ -82,8 +115,10 @@ class DetailTransactionsController extends Controller
      * @param  \App\Models\detail_transactions  $detail_transactions
      * @return \Illuminate\Http\Response
      */
-    public function destroy(detail_transactions $detail_transactions)
+    public function destroy(detail_transactions $detail_transactions, $id)
     {
-        //
+        $detail_transaction = detail_transactions::find($id);
+        $detail_transaction->delete();
+        return redirect()->route('user.cart');
     }
 }
