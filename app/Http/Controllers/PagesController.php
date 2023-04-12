@@ -30,7 +30,7 @@ class PagesController extends Controller
 
     public function product_detail($id){
         $category = categories::paginate(5);
-        $product = products::where('id_products',$id)->get();
+        $product = products::with('categories', 'users')->find($id);
         return view('user.page_product_detail',compact('product','category'));
     }
 }

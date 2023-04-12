@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts_user.app')
 
 @section('title', 'Profile')
 
@@ -21,7 +21,7 @@
                                         class="form-control text-muted @error('avatar') is-invalid @enderror" name="avatar"
                                         id="avatar" aria-describedby="avatarHelp" style="display: none"
                                         onchange="PreviewImage()">
-                                    <input type="button" value="Ubah Avatar" class="btn btn-outline-primary ms-1"
+                                    <input type="button" value="Ubah Avatar" class="btn btn-primary"
                                         onclick="document.getElementById('avatar').click();" />
                                 </div>
                             </div>
@@ -34,8 +34,7 @@
                                         <p class="mb-0">{{ Auth::user()->email }}</p>
                                     </li>
                                     <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                                        <i class="fab fa-github fa-lg" style="color: #333333;"></i>
-                                        <p class="mb-0">{{ '@' . Auth::user()->username }}</p>
+                                        <a href="{{route('dashboard.admin')}}" class="btn btn-primary">Admin</a>
                                     </li>
                                 </ul>
                             </div>

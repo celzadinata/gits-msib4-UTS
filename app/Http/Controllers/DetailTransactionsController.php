@@ -69,7 +69,7 @@ class DetailTransactionsController extends Controller
             ]);
         }
 
-        return back();
+        return back()->with('success', 'Berhasil menambahkan ke keranjang');
     }
 
     /**
