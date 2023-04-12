@@ -7,7 +7,9 @@ use App\Models\products;
 use App\Models\transactions;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Date;
+
 
 class TransactionsController extends Controller
 {
@@ -18,7 +20,16 @@ class TransactionsController extends Controller
      */
     public function index()
     {
-        //
+        // Dapat id yang login
+        $penjual = Auth::id();
+
+        // Tampilkan data transaksi punya user yang login
+        $transactionsModel = transactions::join('detail_transactions', 'transactions.id', '=', 'detail_transactions.transactions_id')
+            ->join('products', 'detail_transactions.products_id', '=', 'products.id_products')
+            ->select('transactions.*', 'products.*')
+            ->where('products.users_id', '=', $penjual)->get();
+
+        return view('/admin/transactions_n_detail/index', compact('transactionsModel'));
     }
 
     /**

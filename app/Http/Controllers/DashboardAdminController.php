@@ -21,19 +21,24 @@ class DashboardAdminController extends Controller
      */
     public function index()
     {
+
         $category = categories::count();
         $product = products::where('users_id','=',Auth::user()->id)->count();
-        $transaction = transactions::where('users_id','=',Auth::user()->id)->count();;
+        $transaction = transactions::join('detail_transactions', 'transactions.id', '=', 'detail_transactions.transactions_id')
+            ->join('products', 'detail_transactions.products_id', '=', 'products.id_products')
+            ->select('transactions.*', 'products.*')
+            ->where('products.users_id', '=', $log)->count();
 
-        $total_harga = transactions::select(DB::raw("CAST(SUM(total) as int) as total_harga"))
-        ->GroupBy(DB::raw("Month(created_at)"))
-        ->pluck('total_harga');
+        $total_harga = transactions::join('detail_transactions', 'transactions.id', '=', 'detail_transactions.transactions_id')
+            ->join('products', 'detail_transactions.products_id', '=', 'products.id_products')->selectRaw("CAST(SUM(total) as int) as total_harga,MONTH(transactions.created_at) as month")
+            ->where('products.users_id', '=', $log)->groupBy("Month")
+            ->pluck('total_harga');
 
         $bulan = transactions::select(DB::raw("MONTHNAME(created_at) as bulan"))
-        ->GroupBy(DB::raw("MONTHNAME(created_at)"))
-        ->pluck('bulan');
+            ->GroupBy(DB::raw("MONTHNAME(created_at)"))
+            ->pluck('bulan');
 
-        return view('admin.dashboard.index',compact('category','product','transaction','total_harga','bulan'));
+        return view('admin.dashboard.index', compact('category', 'product', 'transaction', 'total_harga', 'bulan'));
     }
 
     /**

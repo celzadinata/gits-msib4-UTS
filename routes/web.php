@@ -10,6 +10,7 @@ use App\Http\Controllers\DetailTransactionsController;
 use App\Http\Controllers\TransactionsController;
 use App\Http\Controllers\UsersController;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -39,7 +40,7 @@ Route::get('/logout', [AuthController::class, "logout"])->name('logout');
 
 
 // Role Penjual
-Route::middleware(['auth:web', 'isAdmin'])->group(function () {
+Route::middleware(['auth:web', 'isAdmin'])->group(function () {    
     // Dashboard
     Route::get('/admin', [DashboardAdminController::class, 'index'])->name('dashboard.admin');
     // Kategori
@@ -59,6 +60,10 @@ Route::middleware(['auth:web', 'isAdmin'])->group(function () {
     // Profile
     Route::get('/admin/profile/edit', [DashboardAdminController::class, 'edit'])->name('dashboard.edit');
     Route::put('/admin/profile+/update', [DashboardAdminController::class, 'update'])->name('do.update');
+    // Route transaksi
+    Route::get('/transaction', [TransactionsController::class, 'index'])->name('showtr');
+    Route::get('/transaction/{id}', [DetailTransactionsController::class, 'show']);
+
 });
 
 // Role Pembeli

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+
+use Illuminate\Support\Facades\DB;
 use App\Models\products;
 use App\Models\categories;
 use Illuminate\Http\Request;
@@ -16,12 +18,15 @@ class DetailTransactionsController extends Controller
      */
     public function index()
     {
+
+
         $payload['cart_items'] = detail_transactions::with('produk')->where('transactions_id', null)->get();
         $payload['total'] = 0;
         $payload['produk'] = products::find('B040');
         $payload['category'] = categories::paginate(5);
         // dd($payload['cart_items']->toArray());
         return view('user.cart', $payload);
+
     }
 
     /**
@@ -73,9 +78,12 @@ class DetailTransactionsController extends Controller
      * @param  \App\Models\detail_transactions  $detail_transactions
      * @return \Illuminate\Http\Response
      */
-    public function show(detail_transactions $detail_transactions)
+    public function show($id)
     {
-        //
+        $detail_transactionsModel = detail_transactions::where('transactions_id', $id)->join('products', 'detail_transactions.products_id', '=', 'products.id_products')
+            ->get();
+        // dd($detail_transactionsModel);
+        return view('/admin/transactions_n_detail/index_detail', ['detail_transactionsModel' => $detail_transactionsModel]);
     }
 
     /**

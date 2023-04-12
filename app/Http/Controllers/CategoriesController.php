@@ -16,8 +16,11 @@ class CategoriesController extends Controller
      */
     public function index()
     {
+
+
         $category = categories::paginate(5);
         return view('admin.category.index',compact('category') );
+
     }
 
     /**
@@ -44,7 +47,6 @@ class CategoriesController extends Controller
         ]);
 
         categories::create($request->all());
-
         return redirect()->route('category')->with('success', 'Berhasil Menambah Kategori!');
     }
 
