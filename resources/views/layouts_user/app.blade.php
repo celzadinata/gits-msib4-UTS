@@ -42,8 +42,9 @@
     {{-- Footer --}}
     @include('layouts_user.footer')
     {{-- End Footer --}}
+    @include('sweetalert::alert')
 
-
+    <script src="{{ asset('assets/user/js/cart.js') }}"></script>
     <script src="{{ asset('assets/user/js/jquery.js') }}"></script>
     <script src="{{ asset('assets/user/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('assets/user/js/jquery.scrollUp.min.js') }}"></script>
