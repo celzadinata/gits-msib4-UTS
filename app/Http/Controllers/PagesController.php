@@ -21,11 +21,11 @@ class PagesController extends Controller
         return view('user.page_productall',compact('category','product'));
     }
 
-    public function product($id){
+    public function product_category($id){
+        $categories = categories::find($id);
         $category = categories::paginate(5);
         $product = products::where('categories_id',$id)->get();
-        $product_news = products::orderBy('created_at')->paginate(5);
-        return view('user.page_product',compact('category','product','product_news'));
+        return view('user.page_product_category',compact('categories','category','product'));
     }
 
     public function product_detail($id){

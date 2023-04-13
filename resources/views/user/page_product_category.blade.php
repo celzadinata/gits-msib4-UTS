@@ -1,4 +1,5 @@
 @extends('layouts_user.app')
+@section('title','Produk')
 @section('content')
     <section>
         <div class="container">
@@ -12,7 +13,7 @@
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
                                         <h4 class="panel-title"><a
-                                                href="{{ route('page.product', $c->id) }}">{{ $c->name }}</a></h4>
+                                                href="{{ route('page.product_category', $c->id) }}">{{ $c->name }}</a></h4>
                                     </div>
                                 </div>
                             @endforeach
@@ -23,7 +24,7 @@
                 <div class="col-sm-9 padding-right">
                     <div class="features_items">
                         <!--features_items-->
-                        <h2 class="title text-center">Produk</h2>
+                        <h2 class="title text-center">{{ $categories->name }}</h2>
                         @foreach ($product as $p)
                             <div class="col-sm-4">
                                 <div class="product-image-wrapper">

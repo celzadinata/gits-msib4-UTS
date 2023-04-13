@@ -1,4 +1,5 @@
 @extends('layouts_user.app')
+@section('title','Keranjang')
 @section('content')
     <form action="{{ route('transaction') }}" method="POST">
         @csrf
@@ -68,7 +69,7 @@
                                         <div style="text-align: center;">
                                             <i class="fa fa-spinner fa-spin fa-5x fa-fw" aria-hidden="true"></i>
                                             <h2 style="margin-top: 0.25em; color: #CC20B9;">Lah kosong :( </h2>
-                                            <p class="text-muted">Ayo belanja produk dulu agar keranjangmu ada isinya</p>  
+                                            <p class="text-muted">Ayo belanja produk dulu agar keranjangmu ada isinya</p>
                                           </div>
                                     </td>
                                 </tr>

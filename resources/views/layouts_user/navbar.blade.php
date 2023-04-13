@@ -12,10 +12,14 @@
                 <div class="shop-menu pull-right">
                     <ul class="nav navbar-nav">
                         @auth
-                            <li><a href="{{ route('user.index') }}"><i class="fa fa-user"></i> Account</a></li>
-                            <li><a href="{{ route('user.cart') }}"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+                            <li><a class="{{ set_active('user.index') }}" href="{{ route('user.index') }}"><i
+                                        class="fa fa-user"></i> Account</a></li>
+                            <li><a class="{{ set_active('user.cart') }}" href="{{ route('user.cart') }}"><i
+                                        class="fa fa-shopping-cart"></i> Cart</a></li>
                             @if (Auth::user()->role == 'penjual')
-                            <li><a href="{{ route('dashboard.admin') }}"><i class="fa fa-wrench"></i> Admin CMS</a></li>
+                                <li><a href="{{ route('dashboard.admin') }}"><i class="fa fa-wrench"></i> Admin
+                                        CMS</a>
+                                </li>
                             @endif
                             <li><a href="{{ route('logout') }}"><i class="fa fa-sign-out"></i> Logout</a></li>
                         @endauth
@@ -46,7 +50,19 @@
                 </div>
                 <div class="mainmenu pull-left">
                     <ul class="nav navbar-nav collapse navbar-collapse">
-                        <li><a href="{{ url('/') }}" class="active">Home</a></li>
+                        <li><a href="{{ route('page.home') }}" class="{{ set_active('page.home') }}">Home</a>
+                        </li>
+                        <li><a href="{{ route('page.product_all') }}"
+                                class="{{ set_active(['page.product_all', 'page.product_category']) }}">Produk</a>
+                        </li>
+                        <li class="dropdown"><a href="#">Kategori<i class="fa fa-angle-down"></i></a>
+                            <ul role="menu" class="sub-menu">
+                                @foreach ($category as $c)
+                                    <li><a href="{{ route('page.product_category', $c->id) }}">{{ $c->name }}</a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </li>
                         <li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
                             <ul role="menu" class="sub-menu">
                                 <li><a href="{{ route('user.cart') }}">Cart</a></li>

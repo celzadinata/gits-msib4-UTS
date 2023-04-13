@@ -66,7 +66,7 @@ class TransactionsController extends Controller
                 return back();
             }
         }
-        
+
         foreach ($cart_items as $key => $item) {
             $product = products::find($item->products_id);
             if ($product->stock >= $request->input('quantity' . $key)) {
