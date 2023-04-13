@@ -9,7 +9,7 @@ Kelompok 1
 ## Cara Menjalakan Aplikasi Web
 ### 1. Jalankan Perintah pada CMD
 ```
-composer install <br>
+composer install 
 composer require doctrine/dbal
 ```
 Perintah ini digunakan untuk menginstall package-package yang digunakan. 
