@@ -4,7 +4,7 @@
 
 @section('content')
     <section>
-        <form action="{{ route('do.update') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('user.update') }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('put')
             <div class="container py-5">
@@ -12,8 +12,13 @@
                     <div class="col-lg-4">
                         <div class="card mb-4">
                             <div class="card-body text-center">
-                                <img src="{{ asset('user/' . Auth::user()->avatar) }}" id="preview"
-                                    class="rounded-circle img-fluid" style="width: 150px; height: 150px;" />
+                                @if (Auth::user()->avatar == 'default')
+                                    <img src="{{ asset('assets/user/images/user.png') }}" id="preview"
+                                        class="rounded-circle img-fluid" style="width: 150px; height: 150px;" />
+                                @else
+                                    <img src="{{ asset('user/' . Auth::user()->avatar) }}" id="preview"
+                                        class="rounded-circle img-fluid" style="width: 150px; height: 150px;" />
+                                @endif
                                 <h5 class="my-3">{{ Auth::user()->first_name . ' ' . Auth::user()->last_name }}</h5>
                                 <p class="text-muted mb-3">{{ '@' . Auth::user()->username }}</p>
                                 <div class="d-flex justify-content-center mb-2">
@@ -24,6 +29,7 @@
                                     <input type="button" value="Ubah Avatar" class="btn btn-primary"
                                         onclick="document.getElementById('avatar').click();" />
                                 </div>
+                                <br>
                             </div>
                         </div>
                         <div class="card mb-4 mb-lg-0">
@@ -32,6 +38,10 @@
                                     <li class="list-group-item d-flex justify-content-between align-items-center p-3">
                                         <i class="fas fa-envelope fa-lg text-warning"></i>
                                         <p class="mb-0">{{ Auth::user()->email }}</p>
+                                    </li>
+
+                                    <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                                        <a href="#" class="btn btn-primary">{{ Auth::user()->role }}</a>
                                     </li>
                                 </ul>
                             </div>
@@ -50,7 +60,7 @@
                                         <div id="firstNameHelp" class="form-text">{{ $message }}</div>
                                     @enderror
                                 </div>
-
+                                <br>
                                 <div class="mb-4">
                                     <label for="lastName" class="form-label">Nama Belakang</label>
                                     <input type="text"
@@ -61,7 +71,7 @@
                                         <div id="lastNameHelp" class="form-text">{{ $message }}</div>
                                     @enderror
                                 </div>
-
+                                <br>
                                 <div class="mb-4">
                                     <label for="username" class="form-label">Username</label>
                                     <input type="text"
@@ -72,7 +82,7 @@
                                         <div id="usernameHelp" class="form-text">{{ $message }}</div>
                                     @enderror
                                 </div>
-
+                                <br>
                                 <div class="mb-4">
                                     <label for="email" class="form-label">Email</label>
                                     <input type="email"
@@ -83,7 +93,7 @@
                                         <div id="emailHelp" class="form-text">{{ $message }}</div>
                                     @enderror
                                 </div>
-
+                                <br>
                                 <div class="mb-4">
                                     <label for="jenisKelamin" class="form-label">Jenis Kelamin</label>
                                     <select class="form-select"
@@ -103,17 +113,17 @@
                                         <div id="namaprodukHelp" class="form-text">{{ $message }}</div>
                                     @enderror
                                 </div>
-
+                                <br>
                                 <div class="mb-4">
                                     <label for="alamat" class="form-label">Alamat</label>
                                     <input type="alamat"
-                                        class="form-control text-muted @error('alamat') is-invalid @enderror" name="alamat"
-                                        id="alamat" value="{{ Auth::user()->alamat }}">
+                                        class="form-control text-muted @error('alamat') is-invalid @enderror"
+                                        name="alamat" id="alamat" value="{{ Auth::user()->alamat }}">
                                     @error('alamat')
                                         <div id="alamatHelp" class="form-text">{{ $message }}</div>
                                     @enderror
                                 </div>
-
+                                <br>
                                 <div class="mb-4">
                                     <label for="telepon" class="form-label">Telepon</label>
                                     <input type="telepon"
@@ -123,7 +133,7 @@
                                         <div id="teleponHelp" class="form-text">{{ $message }}</div>
                                     @enderror
                                 </div>
-
+                                <br>
                                 <div class="mb-4">
                                     <label for="password" class="form-label">Password Baru</label>
                                     <input type="password"
@@ -133,7 +143,7 @@
                                         <div id="passwordHelp" class="form-text">{{ $message }}</div>
                                     @enderror
                                 </div>
-
+                                <br>
                                 <div class="mb-3">
                                     <label for="password_confirmation" class="form-label">Password Konfirmasi</label>
                                     <input type="password"
@@ -143,83 +153,10 @@
                                         <div id="passwordConfirmationHelp" class="form-text">{{ $message }}</div>
                                     @enderror
                                 </div>
-
                                 <button type="submit" class="btn btn-primary">Simpan</button>
-
                             </div>
+                            <br>
                         </div>
-                        {{-- <div class="row">
-                        <div class="col-md-6">
-                            <div class="card mb-4 mb-md-0">
-                                <div class="card-body">
-                                    <p class="mb-4"><span class="text-primary font-italic me-1">assigment</span>
-                                        Project
-                                        Status
-                                    </p>
-                                    <p class="mb-1" style="font-size: .77rem;">Web Design</p>
-                                    <div class="progress rounded" style="height: 5px;">
-                                        <div class="progress-bar" role="progressbar" style="width: 80%"
-                                            aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                    <p class="mt-4 mb-1" style="font-size: .77rem;">Website Markup</p>
-                                    <div class="progress rounded" style="height: 5px;">
-                                        <div class="progress-bar" role="progressbar" style="width: 72%"
-                                            aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                    <p class="mt-4 mb-1" style="font-size: .77rem;">One Page</p>
-                                    <div class="progress rounded" style="height: 5px;">
-                                        <div class="progress-bar" role="progressbar" style="width: 89%"
-                                            aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                    <p class="mt-4 mb-1" style="font-size: .77rem;">Mobile Template</p>
-                                    <div class="progress rounded" style="height: 5px;">
-                                        <div class="progress-bar" role="progressbar" style="width: 55%"
-                                            aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                    <p class="mt-4 mb-1" style="font-size: .77rem;">Backend API</p>
-                                    <div class="progress rounded mb-2" style="height: 5px;">
-                                        <div class="progress-bar" role="progressbar" style="width: 66%"
-                                            aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="card mb-4 mb-md-0">
-                                <div class="card-body">
-                                    <p class="mb-4"><span class="text-primary font-italic me-1">assigment</span>
-                                        Project
-                                        Status
-                                    </p>
-                                    <p class="mb-1" style="font-size: .77rem;">Web Design</p>
-                                    <div class="progress rounded" style="height: 5px;">
-                                        <div class="progress-bar" role="progressbar" style="width: 80%"
-                                            aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                    <p class="mt-4 mb-1" style="font-size: .77rem;">Website Markup</p>
-                                    <div class="progress rounded" style="height: 5px;">
-                                        <div class="progress-bar" role="progressbar" style="width: 72%"
-                                            aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                    <p class="mt-4 mb-1" style="font-size: .77rem;">One Page</p>
-                                    <div class="progress rounded" style="height: 5px;">
-                                        <div class="progress-bar" role="progressbar" style="width: 89%"
-                                            aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                    <p class="mt-4 mb-1" style="font-size: .77rem;">Mobile Template</p>
-                                    <div class="progress rounded" style="height: 5px;">
-                                        <div class="progress-bar" role="progressbar" style="width: 55%"
-                                            aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                    <p class="mt-4 mb-1" style="font-size: .77rem;">Backend API</p>
-                                    <div class="progress rounded mb-2" style="height: 5px;">
-                                        <div class="progress-bar" role="progressbar" style="width: 66%"
-                                            aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> --}}
                     </div>
                 </div>
             </div>

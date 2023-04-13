@@ -9,6 +9,10 @@
     </div>
     <div class="user_wrapper">
         <span>{{ Auth::user()->username }}</span>
-        <img src="{{ asset('user/' . Auth::user()->avatar) }}" alt="">
+        @if (Auth::user()->avatar == 'default')
+            <img src="{{ asset('assets/user/images/user.png') }}" alt="">
+        @else
+            <img src="{{ asset('user/' . Auth::user()->avatar) }}" alt="">
+        @endif
     </div>
 </div>

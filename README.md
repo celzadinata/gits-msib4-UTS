@@ -9,7 +9,8 @@ Kelompok 1
 ## Cara Menjalakan Aplikasi Web
 ### 1. Jalankan Perintah pada CMD
 ```
-composer install
+composer install 
+composer require doctrine/dbal
 ```
 Perintah ini digunakan untuk menginstall package-package yang digunakan. 
 ### 2. Copy folder env.example kemudian rename dengan nama .env menggunakan perintah

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
+    <title>@yield('title') | Toko-ku</title>
     <title>Home | Toko-ku</title>
     <link href="{{ asset('assets/user/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/user/css/font-awesome.min.css') }}" rel="stylesheet">
@@ -15,7 +16,6 @@
     <link href="{{ asset('assets/user/css/main.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/user/css/responsive.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/css/img_preview.css') }}">
-    <script src="{{ asset('assets/js/preview_img.js') }}"></script>
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
@@ -58,6 +58,8 @@
     <script src="{{ asset('assets/user/js/price-range.js') }}"></script>
     <script src="{{ asset('assets/user/js/jquery.prettyPhoto.js') }}"></script>
     <script src="{{ asset('assets/user/js/main.js') }}"></script>
+    {{-- Profile JS --}}
+    <script src="{{ asset('assets/admin/js/preview_img.js') }}"></script>
 </body>
 
 </html>
