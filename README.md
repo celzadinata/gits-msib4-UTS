@@ -39,6 +39,11 @@ php artisan migrate
 Perintah ini digunakan untuk membuat tabel-tabel di database.
 ### 6. Jalankan perintah pada CMD
 ```
+php artisan db:seed
+```
+Perintah ini digunakan untuk mengisi tabel user,category,dan product di database.
+### 7. Jalankan perintah pada CMD
+```
 php artisan serve
 ```
 Perintah ini digunakan untuk menjalankan aplikasi.
