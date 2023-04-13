@@ -10,14 +10,14 @@ class PagesController extends Controller
 {
     public function home(){
         $category = categories::paginate(5);
-        $product = products::with('categories')->get();
+        $product = products::with('categories')->paginate(3);
         $product_news = products::orderBy('created_at')->paginate(5);
         return view('user.page_dashboard',compact('category','product','product_news'));
     }
 
     public function product_all(){
         $category = categories::paginate(5);
-        $product = products::paginate(6);
+        $product = products::all();
         return view('user.page_productall',compact('category','product'));
     }
 

@@ -11,6 +11,7 @@ Kelompok 1
 ```
 composer install 
 composer require doctrine/dbal
+composer require realrashid/sweet-alert
 ```
 Perintah ini digunakan untuk menginstall package-package yang digunakan. 
 ### 2. Copy folder env.example kemudian rename dengan nama .env menggunakan perintah
