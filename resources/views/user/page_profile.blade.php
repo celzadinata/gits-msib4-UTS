@@ -1,8 +1,10 @@
-@extends('layouts_admin.app')
+@extends('layouts_user.app')
+
 @section('title', 'Profile')
+
 @section('content')
-    <section style="background-color: #eee;">
-        <form action="{{ route('do.update') }}" method="POST" enctype="multipart/form-data">
+    <section>
+        <form action="{{ route('user.update') }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('put')
             <div class="container py-5">
@@ -24,9 +26,10 @@
                                         class="form-control text-muted @error('avatar') is-invalid @enderror" name="avatar"
                                         id="avatar" aria-describedby="avatarHelp" style="display: none"
                                         onchange="PreviewImage()">
-                                    <input type="button" value="Ubah Avatar" class="btn btn-outline-primary ms-1"
+                                    <input type="button" value="Ubah Avatar" class="btn btn-primary"
                                         onclick="document.getElementById('avatar').click();" />
                                 </div>
+                                <br>
                             </div>
                         </div>
                         <div class="card mb-4 mb-lg-0">
@@ -37,8 +40,7 @@
                                         <p class="mb-0">{{ Auth::user()->email }}</p>
                                     </li>
                                     <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                                        <i class="fas fa-home fa-lg text-primary"></i>
-                                        <a class="btn btn-outline-primary" href="{{route('page.home')}}">User Homepage</a>
+                                        <a href="#" class="btn btn-primary">{{ Auth::user()->role }}</a>
                                     </li>
                                 </ul>
                             </div>
@@ -57,7 +59,7 @@
                                         <div id="firstNameHelp" class="form-text">{{ $message }}</div>
                                     @enderror
                                 </div>
-
+                                <br>
                                 <div class="mb-4">
                                     <label for="lastName" class="form-label">Nama Belakang</label>
                                     <input type="text"
@@ -68,7 +70,7 @@
                                         <div id="lastNameHelp" class="form-text">{{ $message }}</div>
                                     @enderror
                                 </div>
-
+                                <br>
                                 <div class="mb-4">
                                     <label for="username" class="form-label">Username</label>
                                     <input type="text"
@@ -79,7 +81,7 @@
                                         <div id="usernameHelp" class="form-text">{{ $message }}</div>
                                     @enderror
                                 </div>
-
+                                <br>
                                 <div class="mb-4">
                                     <label for="email" class="form-label">Email</label>
                                     <input type="email"
@@ -90,7 +92,7 @@
                                         <div id="emailHelp" class="form-text">{{ $message }}</div>
                                     @enderror
                                 </div>
-
+                                <br>
                                 <div class="mb-4">
                                     <label for="jenisKelamin" class="form-label">Jenis Kelamin</label>
                                     <select class="form-select"
@@ -110,7 +112,7 @@
                                         <div id="namaprodukHelp" class="form-text">{{ $message }}</div>
                                     @enderror
                                 </div>
-
+                                <br>
                                 <div class="mb-4">
                                     <label for="alamat" class="form-label">Alamat</label>
                                     <input type="alamat"
@@ -120,7 +122,7 @@
                                         <div id="alamatHelp" class="form-text">{{ $message }}</div>
                                     @enderror
                                 </div>
-
+                                <br>
                                 <div class="mb-4">
                                     <label for="telepon" class="form-label">Telepon</label>
                                     <input type="telepon"
@@ -130,7 +132,7 @@
                                         <div id="teleponHelp" class="form-text">{{ $message }}</div>
                                     @enderror
                                 </div>
-
+                                <br>
                                 <div class="mb-4">
                                     <label for="password" class="form-label">Password Baru</label>
                                     <input type="password"
@@ -140,7 +142,7 @@
                                         <div id="passwordHelp" class="form-text">{{ $message }}</div>
                                     @enderror
                                 </div>
-
+                                <br>
                                 <div class="mb-3">
                                     <label for="password_confirmation" class="form-label">Password Konfirmasi</label>
                                     <input type="password"
@@ -150,10 +152,9 @@
                                         <div id="passwordConfirmationHelp" class="form-text">{{ $message }}</div>
                                     @enderror
                                 </div>
-
-                                <button type="submit" class="btn btn-primary"><i class="nav-icon fas fa-save"></i> Simpan</button>
-
+                                <button type="submit" class="btn btn-primary">Simpan</button>
                             </div>
+                            <br>
                         </div>
                     </div>
                 </div>

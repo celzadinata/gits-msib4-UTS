@@ -1,5 +1,5 @@
 @extends('layouts_user.app')
-@section('title','Produk')
+@section('title','Produk_detail')
 @section('content')
     <section>
         <div class="container">
@@ -13,7 +13,7 @@
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
                                         <h4 class="panel-title"><a
-                                                href="{{ route('page.product', $c->id) }}">{{ $c->name }}</a></h4>
+                                                href="{{ route('page.product_category', $c->id) }}">{{ $c->name }}</a></h4>
                                     </div>
                                 </div>
                             @endforeach
@@ -27,7 +27,7 @@
                         <!--product-details-->
                         <div class="col-sm-5">
                             <div class="view-product">
-                                <img src="{{ url('images/' . $product->image) }}" alt="" />
+                                <img src="{{ asset('images/' . $product->image) }}" alt="" />
                             </div>
                         </div>
                         <div class="col-sm-7">
@@ -35,21 +35,19 @@
                                 <!--/product-information-->
                                 <img src="{{ asset('assets/user/images/product-details/new.jpg') }}" class="newarrival"
                                     alt="" />
-                                <h2>{{ $product->name }}</h2>
-                                {{-- <p>Web ID: 1089772</p> --}}
+                                <h2>{{$product->name}}</h2>
+                                <p>Produk ID: {{$product->id_products}}</p>
                                 <img src="{{ asset('assets/user/images/product-details/rating.png') }}" alt="" />
                                 <span>
-                                    <span>Rp{{ number_format($product->price, 0, '.', '.') }}</span>
-                                    <label>Quantity:</label>
-                                    <input type="text" value="3" />
-                                    <button type="button" class="btn btn-fefault cart">
+                                    <span>RP {{number_format($product->price, 0, '.', '.')}}</span>
+                                    <a href="{{url('/cart-add/' . $product->id_products)}}" class="btn btn-fefault cart">
                                         <i class="fa fa-shopping-cart"></i>
-                                        Add to cart
-                                    </button>
+                                        Beli
+                                    </a>
                                 </span>
-                                <p><b>Availability:</b> In Stock</p>
-                                <p><b>Condition:</b> New</p>
-                                <p><b>Brand:</b> E-SHOPPER</p>
+                                <p><b>Persediaan:</b> {{$product->stock}} stok</p>
+                                <p><b>Kondisi:</b> New</p>
+                                <p><b>Kategori:</b> {{$product->categories->name}}</p>
                                 <a href=""><img src="{{ asset('assets/user/images/product-details/share.png') }}"
                                         class="share img-responsive" alt="" /></a>
                             </div>
@@ -69,18 +67,12 @@
                             <div class="tab-pane fade active in" id="reviews">
                                 <div class="col-sm-12">
                                     <ul>
-                                        <li><a href=""><i class="fa fa-user"></i>EUGEN</a></li>
-                                        <li><a href=""><i class="fa fa-clock-o"></i>12:41 PM</a></li>
-                                        <li><a href=""><i class="fa fa-calendar-o"></i>31 DEC 2014</a></li>
+                                        <li><a href="#"><i class="fa fa-user"></i>{{$product->users->first_name}} {{$product->users->last_name}}</a></li>
+                                        <li><a href="#"><i class="fa fa-clock-o"></i><i class="fa fa-calendar-o"></i>{{$product->created_at}}</a></li>
                                     </ul>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud
-                                        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute irure
-                                        dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                                        pariatur.</p>
+                                    <p>{{$product->description}}</p>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                     <!--/category-tab-->

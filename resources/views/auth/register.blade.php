@@ -1,7 +1,5 @@
 @extends('layouts.app')
-
 @section('title', 'register')
-
 @section('content')
     <div class="login-page mt-5">
         <div class="row">
@@ -21,7 +19,10 @@
                                 <h1 class="my-4">Sign Up</h1>
                                 <p class="text-muted mb-4"> <small>Daftar agar memudahkan kamu dalam mengakses
                                         <i>E-commerce</i> terbesar didunia</small> </p>
-                                <form action="{{ route('do.register') }}" method="POST" enctype="multipart/form-data" class="row g-3">
+                                <small class="text-danger">** <small class="text-muted">Agar dapat mengakses CMS diharuskan
+                                        membuat akun sebagai penjual!</small></small><br>
+                                <form action="{{ route('do.register') }}" method="POST" enctype="multipart/form-data"
+                                    class="row g-3">
                                     @csrf
                                     <div class="col-12">
                                         <label for="firstName" class="form-label">Nama Depan</label>

@@ -1,5 +1,5 @@
 @extends('layouts_user.app')
-@section('title','Cart')
+@section('title','Keranjang')
 @section('content')
     <form action="{{ route('transaction') }}" method="POST">
         @csrf
