@@ -67,16 +67,21 @@ class TransactionsController extends Controller
                 return back();
             }
         }
-
+        
+        $count = 0;
         foreach ($cart_items as $key => $item) {
             $product = products::find($item->products_id);
             if ($product->stock >= $request->input('quantity' . $key)) {
+                $count += $request->input('sub_total' . $key) * $request->input('quantity' . $key);
                 $product->stock -= $request->input('quantity' . $key);
                 $product->update();
                 $item->transactions_id = $transactions->id;
+                $transactions->payment = $count;
+                $transactions->total = $count;
                 $item->qty = $request->input('quantity' . $key);
                 $item->sub_total = $request->input('sub_total' . $key) * $request->input('quantity' . $key);
                 $item->update();
+                $transactions->update();
             } else {
                 alert()->error('Ada produk yang kekurangan stok, silahkan cek kembali persediaan produk');
                 return back();
