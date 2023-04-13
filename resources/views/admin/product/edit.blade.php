@@ -120,8 +120,6 @@
                     <div class="mb-3">
                         <div class="form-group">
                             <label for="image">Image :</label>
-                            <input type="file" name="image" id="image" class="form-control">
-
                             @if ($product->image)
                                 <br>
                                 <img src="{{ asset('images/' . $product->image) }}" alt="{{ $product->name }}"
