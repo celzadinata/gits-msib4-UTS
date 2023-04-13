@@ -34,7 +34,7 @@
             </a>
         </li>
         <li>
-            <a href="{{ route('showtr') }}" class="nav-link {{ set_active(['showtr']) }}" " id="transaction">
+            <a href="{{ route('showtr') }}" class="nav-link {{ set_active(['showtr']) }} " id="transaction">
                 <i class='bx bx-book-open'></i>
                 <span class="links_name">
                     Transaksi
