@@ -55,7 +55,7 @@ Route::middleware(['auth:web', 'isAdmin'])->group(function () {
     Route::get('/admin/product/destroy/{id}', [ProductsController::class, 'destroy'])->name('product.destroy');
     // Transaksi
     Route::get('/transaction', [TransactionsController::class, 'index'])->name('showtr');
-    Route::get('/transaction/{id}', [DetailTransactionsController::class, 'show']);
+    Route::get('/transaction/{id}', [DetailTransactionsController::class, 'show'])->name('showdt');
     // Profile
     Route::get('/admin/profile/edit', [DashboardAdminController::class, 'edit'])->name('dashboard.edit');
     Route::put('/admin/profile/update', [DashboardAdminController::class, 'update'])->name('do.update');
