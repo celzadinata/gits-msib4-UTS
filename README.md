@@ -16,7 +16,7 @@ composer require realrashid/sweet-alert
 Perintah ini digunakan untuk menginstall package-package yang digunakan. 
 ### 2. Copy folder env.example kemudian rename dengan nama .env menggunakan perintah
 ```
-cp env.example .env
+cp .env.example .env
 ```
 ### 3. Jalankan perintah pada CMD
 ```
