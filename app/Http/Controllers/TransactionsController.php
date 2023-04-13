@@ -58,6 +58,7 @@ class TransactionsController extends Controller
         ]);
         $cart_items = detail_transactions::where('transactions_id', null)->get();
 
+
         foreach ($cart_items as $keyy => $itemm) {
             $product = products::find($itemm->products_id);
             $validation = products::find($itemm->products_id);
@@ -66,7 +67,7 @@ class TransactionsController extends Controller
                 return back();
             }
         }
-        
+
         foreach ($cart_items as $key => $item) {
             $product = products::find($item->products_id);
             if ($product->stock >= $request->input('quantity' . $key)) {

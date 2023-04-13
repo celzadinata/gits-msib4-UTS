@@ -28,19 +28,19 @@ use App\Http\Controllers\UsersController;
 
 //Authentikasi
 Route::middleware(['guest'])->group(function () {
-// Register
-Route::get('/register', [AuthController::class, "register"])->name('register');
-Route::post('/register', [AuthController::class, "doRegister"])->name('do.register');
-// Login
-Route::get('/login', [AuthController::class, "login"])->name('login');
-Route::post('/login', [AuthController::class, "doLogin"])->name('do.login');
+    // Register
+    Route::get('/register', [AuthController::class, "register"])->name('register');
+    Route::post('/register', [AuthController::class, "doRegister"])->name('do.register');
+    // Login
+    Route::get('/login', [AuthController::class, "login"])->name('login');
+    Route::post('/login', [AuthController::class, "doLogin"])->name('do.login');
 });
 // Logout
 Route::get('/logout', [AuthController::class, "logout"])->name('logout');
 
 
 // Role Penjual
-Route::middleware(['auth:web', 'isAdmin'])->group(function () {    
+Route::middleware(['auth:web', 'isAdmin'])->group(function () {
     // Dashboard
     Route::get('/admin', [DashboardAdminController::class, 'index'])->name('dashboard.admin');
     // Kategori
@@ -63,7 +63,6 @@ Route::middleware(['auth:web', 'isAdmin'])->group(function () {
     // Route transaksi
     Route::get('/transaction', [TransactionsController::class, 'index'])->name('showtr');
     Route::get('/transaction/{id}', [DetailTransactionsController::class, 'show']);
-
 });
 
 // Role Pembeli
@@ -79,7 +78,3 @@ Route::get('/', [PagesController::class, "home"])->name('page.home');
 Route::get('/product-all', [PagesController::class, "product_all"])->name('page.product_all');
 Route::get('/product/{id}', [PagesController::class, "product"])->name('page.product');
 Route::get('/product-detail/{id}', [PagesController::class, "product_detail"])->name('page.product_detail');
-
-
-
-

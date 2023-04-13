@@ -33,9 +33,6 @@
                                         <i class="fas fa-envelope fa-lg text-warning"></i>
                                         <p class="mb-0">{{ Auth::user()->email }}</p>
                                     </li>
-                                    <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                                        <a href="{{route('dashboard.admin')}}" class="btn btn-primary">Admin</a>
-                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -110,8 +107,8 @@
                                 <div class="mb-4">
                                     <label for="alamat" class="form-label">Alamat</label>
                                     <input type="alamat"
-                                        class="form-control text-muted @error('alamat') is-invalid @enderror"
-                                        name="alamat" id="alamat" value="{{ Auth::user()->alamat }}">
+                                        class="form-control text-muted @error('alamat') is-invalid @enderror" name="alamat"
+                                        id="alamat" value="{{ Auth::user()->alamat }}">
                                     @error('alamat')
                                         <div id="alamatHelp" class="form-text">{{ $message }}</div>
                                     @enderror

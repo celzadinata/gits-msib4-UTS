@@ -9,6 +9,7 @@ use App\Models\categories;
 use Illuminate\Http\Request;
 use App\Models\detail_transactions;
 
+
 class DetailTransactionsController extends Controller
 {
     /**
@@ -26,7 +27,6 @@ class DetailTransactionsController extends Controller
         $payload['category'] = categories::paginate(5);
         // dd($payload['cart_items']->toArray());
         return view('user.cart', $payload);
-
     }
 
     /**

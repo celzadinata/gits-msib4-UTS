@@ -14,6 +14,7 @@
                                 <td class="quantity">Kuantitas</td>
                                 <td class="total" id="tes">Total</td>
                                 <td></td>
+
                             </tr>
                         </thead>
                         <tbody>
@@ -50,6 +51,7 @@
                                                 {{ number_format($item->produk->price * $item->qty, 2) }}
                                             </p>
                                         </td>
+
                                         <td class="cart_delete">
                                             <a class="cart_quantity_delete"
                                                 href="{{ url('/cart/remove' . '/' . $item->id) }}"><i
@@ -68,8 +70,8 @@
                                         <div style="text-align: center;">
                                             <i class="fa fa-spinner fa-spin fa-5x fa-fw" aria-hidden="true"></i>
                                             <h2 style="margin-top: 0.25em; color: #CC20B9;">Lah kosong :( </h2>
-                                            <p class="text-muted">Ayo belanja produk dulu agar keranjangmu ada isinya</p>  
-                                          </div>
+                                            <p class="text-muted">Ayo belanja produk dulu agar keranjangmu ada isinya</p>
+                                        </div>
                                     </td>
                                 </tr>
                             @endif
@@ -84,7 +86,8 @@
             <div class="container">
                 <div class="heading">
                     <h3>Sudah yakin dengan barang belanja mu?</h3>
-                    <p>Dengan belanja di Toko-ku, berbelanja jadi makin asyik karena bebas biaya ongkir dan pengiriman yang cepat.</p>
+                    <p>Dengan belanja di Toko-ku, berbelanja jadi makin asyik karena bebas biaya ongkir dan pengiriman yang
+                        cepat.</p>
                 </div>
                 <div class="row">
                     <div class="col-sm-6">
