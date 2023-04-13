@@ -16,7 +16,6 @@
     <link href="{{ asset('assets/user/css/main.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/user/css/responsive.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/css/img_preview.css') }}">
-    <script src="{{ asset('assets/js/preview_img.js') }}"></script>
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
