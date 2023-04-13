@@ -18,14 +18,12 @@ class DetailTransactionsController extends Controller
      */
     public function index()
     {
-
-
         $payload['cart_items'] = detail_transactions::with('produk')->where('transactions_id', null)->get();
         $payload['total'] = 0;
         $payload['produk'] = products::find('B040');
         $payload['category'] = categories::paginate(5);
         // dd($payload['cart_items']->toArray());
-        return view('user.cart', $payload);
+        return view('user.page_cart', $payload);
 
     }
 

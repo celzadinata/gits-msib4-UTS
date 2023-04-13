@@ -13,7 +13,7 @@
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
                                         <h4 class="panel-title"><a
-                                                href="{{ route('page.product', $c->id) }}">{{ $c->name }}</a></h4>
+                                                href="{{ route('page.product_category', $c->id) }}">{{ $c->name }}</a></h4>
                                     </div>
                                 </div>
                             @endforeach

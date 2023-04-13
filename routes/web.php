@@ -36,7 +36,7 @@ Route::get('/logout', [AuthController::class, "logout"])->name('logout');
 
 
 // Role Penjual
-Route::middleware(['auth:web', 'isAdmin'])->group(function () {    
+Route::middleware(['auth:web', 'isAdmin'])->group(function () {
     // Dashboard
     Route::get('/admin', [DashboardAdminController::class, 'index'])->name('dashboard.admin');
     // Kategori
@@ -53,28 +53,34 @@ Route::middleware(['auth:web', 'isAdmin'])->group(function () {
     Route::get('/admin/product/edit/{id_products}', [ProductsController::class, 'edit'])->name('product.edit');
     Route::put('/admin/product/update/{id_products}', [ProductsController::class, 'update'])->name('product.update');
     Route::get('/admin/product/destroy/{id}', [ProductsController::class, 'destroy'])->name('product.destroy');
-    // Profile
-    Route::get('/admin/profile/edit', [DashboardAdminController::class, 'edit'])->name('dashboard.edit');
-    Route::put('/admin/profile+/update', [DashboardAdminController::class, 'update'])->name('do.update');
-    // Route transaksi
+    // Transaksi
     Route::get('/transaction', [TransactionsController::class, 'index'])->name('showtr');
     Route::get('/transaction/{id}', [DetailTransactionsController::class, 'show']);
-
+    // Profile
+    Route::get('/admin/profile/edit', [DashboardAdminController::class, 'edit'])->name('dashboard.edit');
+    Route::put('/admin/profile/update', [DashboardAdminController::class, 'update'])->name('do.update');
 });
 
 // Role Pembeli
 Route::middleware(['auth:web'])->group(function () {
+    // Profile
     Route::get('/profile', [UsersController::class, "index"])->name('user.index');
+    Route::put('/profile/update', [UsersController::class, "update"])->name('user.update');
+    // Cart dan Transaksi
     Route::get('/cart', [DetailTransactionsController::class, "index"])->name('user.cart');
     Route::get('/cart-add/{id}', [DetailTransactionsController::class, "store"])->name('cart.store');
     Route::get('/cart/remove/{id}', [DetailTransactionsController::class, 'destroy'])->name('cart.remove');
     Route::post('/transactions/store', [TransactionsController::class, "store"])->name('transaction');
 });
 
+// Home
 Route::get('/', [PagesController::class, "home"])->name('page.home');
+// Semua Produk
 Route::get('/product-all', [PagesController::class, "product_all"])->name('page.product_all');
-Route::get('/product/{id}', [PagesController::class, "product"])->name('page.product');
-Route::get('/product-detail/{id_products}', [PagesController::class, "product_detail"])->name('page.product_detail');
+// Produk Sesuai Kategori
+Route::get('/product_category/{id}', [PagesController::class, "product_category"])->name('page.product_category');
+// Produk Detail
+Route::get('/product-detail/{id}', [PagesController::class, "product_detail"])->name('page.product_detail');
 
 
 

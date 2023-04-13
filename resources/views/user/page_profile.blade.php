@@ -4,7 +4,7 @@
 
 @section('content')
     <section>
-        <form action="{{ route('do.update') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('user.update') }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('put')
             <div class="container py-5">
@@ -12,8 +12,13 @@
                     <div class="col-lg-4">
                         <div class="card mb-4">
                             <div class="card-body text-center">
-                                <img src="{{ asset('user/' . Auth::user()->avatar) }}" id="preview"
-                                    class="rounded-circle img-fluid" style="width: 150px; height: 150px;" />
+                                @if (Auth::user()->avatar == 'default')
+                                    <img src="{{ asset('assets/user/images/user.png') }}" id="preview"
+                                        class="rounded-circle img-fluid" style="width: 150px; height: 150px;" />
+                                @else
+                                    <img src="{{ asset('user/' . Auth::user()->avatar) }}" id="preview"
+                                        class="rounded-circle img-fluid" style="width: 150px; height: 150px;" />
+                                @endif
                                 <h5 class="my-3">{{ Auth::user()->first_name . ' ' . Auth::user()->last_name }}</h5>
                                 <p class="text-muted mb-3">{{ '@' . Auth::user()->username }}</p>
                                 <div class="d-flex justify-content-center mb-2">
@@ -24,6 +29,7 @@
                                     <input type="button" value="Ubah Avatar" class="btn btn-primary"
                                         onclick="document.getElementById('avatar').click();" />
                                 </div>
+                                <br>
                             </div>
                         </div>
                         <div class="card mb-4 mb-lg-0">
@@ -34,7 +40,7 @@
                                         <p class="mb-0">{{ Auth::user()->email }}</p>
                                     </li>
                                     <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                                        <a href="{{ route('dashboard.admin') }}" class="btn btn-primary">Admin</a>
+                                        <a href="#" class="btn btn-primary">{{ Auth::user()->role }}</a>
                                     </li>
                                 </ul>
                             </div>
@@ -53,7 +59,7 @@
                                         <div id="firstNameHelp" class="form-text">{{ $message }}</div>
                                     @enderror
                                 </div>
-
+                                <br>
                                 <div class="mb-4">
                                     <label for="lastName" class="form-label">Nama Belakang</label>
                                     <input type="text"
@@ -64,7 +70,7 @@
                                         <div id="lastNameHelp" class="form-text">{{ $message }}</div>
                                     @enderror
                                 </div>
-
+                                <br>
                                 <div class="mb-4">
                                     <label for="username" class="form-label">Username</label>
                                     <input type="text"
@@ -75,7 +81,7 @@
                                         <div id="usernameHelp" class="form-text">{{ $message }}</div>
                                     @enderror
                                 </div>
-
+                                <br>
                                 <div class="mb-4">
                                     <label for="email" class="form-label">Email</label>
                                     <input type="email"
@@ -86,7 +92,7 @@
                                         <div id="emailHelp" class="form-text">{{ $message }}</div>
                                     @enderror
                                 </div>
-
+                                <br>
                                 <div class="mb-4">
                                     <label for="jenisKelamin" class="form-label">Jenis Kelamin</label>
                                     <select class="form-select"
@@ -106,7 +112,7 @@
                                         <div id="namaprodukHelp" class="form-text">{{ $message }}</div>
                                     @enderror
                                 </div>
-
+                                <br>
                                 <div class="mb-4">
                                     <label for="alamat" class="form-label">Alamat</label>
                                     <input type="alamat"
@@ -116,7 +122,7 @@
                                         <div id="alamatHelp" class="form-text">{{ $message }}</div>
                                     @enderror
                                 </div>
-
+                                <br>
                                 <div class="mb-4">
                                     <label for="telepon" class="form-label">Telepon</label>
                                     <input type="telepon"
@@ -126,7 +132,7 @@
                                         <div id="teleponHelp" class="form-text">{{ $message }}</div>
                                     @enderror
                                 </div>
-
+                                <br>
                                 <div class="mb-4">
                                     <label for="password" class="form-label">Password Baru</label>
                                     <input type="password"
@@ -136,7 +142,7 @@
                                         <div id="passwordHelp" class="form-text">{{ $message }}</div>
                                     @enderror
                                 </div>
-
+                                <br>
                                 <div class="mb-3">
                                     <label for="password_confirmation" class="form-label">Password Konfirmasi</label>
                                     <input type="password"
@@ -146,10 +152,9 @@
                                         <div id="passwordConfirmationHelp" class="form-text">{{ $message }}</div>
                                     @enderror
                                 </div>
-
                                 <button type="submit" class="btn btn-primary">Simpan</button>
-
                             </div>
+                            <br>
                         </div>
                     </div>
                 </div>

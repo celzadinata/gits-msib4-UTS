@@ -1,7 +1,5 @@
 @extends('layouts.app')
-
 @section('title', 'register')
-
 @section('content')
     <div class="login-page mt-5">
         <div class="row">
